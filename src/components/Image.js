@@ -191,11 +191,9 @@ const [showInput, setShowInput] = useState(false)
            {images.map((image) => {
              return (
                <section key={image._id} className="w-75 p-3">
-                 <row className='g-0'>
-                   <col md='4'>
-                     <image style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} fluid />
-                   </col>
-                   <col md='8'>
+                
+                     <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} fluid />
+                  
                      <div>
                        <h1>{image.link}</h1>
                        <h2 onClick={() => setShowInput(!showInput)}>{image.alt}
@@ -217,8 +215,7 @@ const [showInput, setShowInput] = useState(false)
                  
                        <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}</button>
                      </div>
-                   </col>
-                 </row>
+               
                </section>
  
              )
