@@ -10,7 +10,7 @@ export default function Image() {
      const [image, setImage] = useState({
           link: '', 
           alt: '', 
-          like: 0
+          likes: 0
 })
 const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
@@ -44,7 +44,7 @@ const [showInput, setShowInput] = useState(false)
        setImage({
           link: '', 
           alt: '', 
-          like: 0
+          likes: 0
        })
      } catch (error) {
        console.error(error)
@@ -95,7 +95,7 @@ const [showInput, setShowInput] = useState(false)
        const index = images.findIndex((image) => image._id === id)
        const imagesCopy = [...images]
        const subject = imagesCopy[index]
-       subject.like = subject.like + 1
+       subject.likes = subject.likes + 1
        const response = await fetch(`/api/images/${id}`, {
          method: 'PUT',
          headers: {
@@ -130,9 +130,9 @@ const [showInput, setShowInput] = useState(false)
      updateUrl(result?.info?.secure_url);
      console.dir(url);
      setImage({
-          link: '', 
+          link: result?.info?.secure_url, 
           alt: '', 
-          like: 0
+          likes: 0
      })
  }
  return (
@@ -193,12 +193,12 @@ const [showInput, setShowInput] = useState(false)
                <section key={image._id} className="w-75 p-3">
                  <row className='g-0'>
                    <col md='4'>
-                     <image style={{ "maxWidth": "100%", "height": "15vw" }} src={image.image} alt='...' fluid />
+                     <image style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} fluid />
                    </col>
                    <col md='8'>
                      <div>
-                       <h1>{image.title}</h1>
-                       <h2 onClick={() => setShowInput(!showInput)}>{image.text}
+                       <h1>{image.link}</h1>
+                       <h2 onClick={() => setShowInput(!showInput)}>{image.alt}
                          <input
                            ref={inputRef}
                            style={{ display: showInput ? 'block' : 'none' }}
@@ -207,15 +207,15 @@ const [showInput, setShowInput] = useState(false)
                              if (e.key === 'Enter') {
                                e.preventDefault()
                                // const text = inputRef.current.value
-                               updateImage(image._id, { text: e.target.value })
+                               updateImage(image._id, { link: e.target.value })
                                setShowInput(false)
                              }
                            }}
-                           defaultValue={image.text}
+                           defaultValue={image.link}
                          />
                        </h2>
                  
-                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.like}</button>
+                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}</button>
                      </div>
                    </col>
                  </row>

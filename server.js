@@ -15,7 +15,7 @@ const app = express()
 const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
-const PORT = process.env.PORT || 2022
+const PORT = process.env.PORT || 3002
 
 // middleware
 app.use(express.json()) //req.body
@@ -27,7 +27,7 @@ app.use(logger('dev'))
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'build')))
 
-app.use('/api/todos', require('./routes/api/images'))
+app.use('/api/images', require('./routes/api/images'))
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
