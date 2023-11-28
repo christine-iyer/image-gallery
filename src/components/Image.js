@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import '../App.css'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
-
+import '../App.css'
 
 export default function Image() {
      const [foundImages, setFoundImages]=useState(null)
@@ -25,6 +24,7 @@ const [showInput, setShowInput] = useState(false)
        const response = await fetch('/api/images')
        const data = await response.json()
        setImages(data)
+       console.log(data)
      } catch (error) {
        console.error(error)
      }
@@ -149,7 +149,7 @@ const [showInput, setShowInput] = useState(false)
                    open();
                  }
                  return (
-                   <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} onClick={handleOnClick}></button>
+                   <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "19px", 'borderBottomColor': 'red', 'height':'19px'}} onClick={handleOnClick}></button>
                  )
                }}
              </UploadWidget>
@@ -164,14 +164,14 @@ const [showInput, setShowInput] = useState(false)
            </span>
  
            <br></br>
-           <input
+           {/* <input
              type='text'
-             value={image.link}
+             src={image.link}
              onChange={handleChange}
              name="link"
              placeholder='Link'
            >
-           </input>
+           </input> */}
            <br />
            <input
              value={image.alt}
@@ -192,10 +192,10 @@ const [showInput, setShowInput] = useState(false)
              return (
                <section key={image._id} className="w-75 p-3">
                 
-                     <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} fluid />
+                     <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
                   
                      <div>
-                       <h1>{image.link}</h1>
+                       {/* <img src={image.link} alt={image.alt}></img> */}
                        <h2 onClick={() => setShowInput(!showInput)}>{image.alt}
                          <input
                            ref={inputRef}
@@ -205,11 +205,12 @@ const [showInput, setShowInput] = useState(false)
                              if (e.key === 'Enter') {
                                e.preventDefault()
                                // const text = inputRef.current.value
-                               updateImage(image._id, { link: e.target.value })
+                               updateImage(image._id, { alt: e.target.value })
                                setShowInput(false)
+                               
                              }
                            }}
-                           defaultValue={image.link}
+                           defaultValue='...'
                          />
                        </h2>
                  
