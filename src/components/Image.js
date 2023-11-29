@@ -51,7 +51,6 @@ export default function Image() {
     }
   }
 
-
   const deleteImage = async (id) => {
     try {
       const response = await fetch(`/api/images/${id}`, {
@@ -140,7 +139,6 @@ export default function Image() {
       <div className='canvas'>
         <h1>Lorelei's Art</h1>
         <div className='uploadForm'>
-          
           <div>
             <span>
               <UploadWidget onUpload={handleOnUpload}>
@@ -150,37 +148,40 @@ export default function Image() {
                     open();
                   }
                   return (
-                    <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)', 'marginBottom': "19px", 'borderBottomColor': 'red', 'height': '19px' }} onClick={handleOnClick}>Upload Photo</button>
+                    <button style={{
+                      'size': 'xx-large',
+                      'alignContent': 'center',
+                      'border': 'none',
+                      'borderRadius': '25%',
+                      'font': 'caption',
+                      'height': '29px'
+                    }}
+                      onClick={handleOnClick}>📷</button>
                   )
                 }}
               </UploadWidget>
               {error && <p>{error}</p>}
               {url && (
-
-                <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
+                <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px' }}>
                   <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
-
                 </div>
               )}
             </span>
-
-           
-            <input
-             type='text'
-             src={image.link}
-             onChange={handleChange}
-             name="link"
-             placeholder='Link'
-           >
-           </input>
-
+            {/* <input
+              type='text'
+              src={image.link}
+              onChange={handleChange}
+              name="link"
+              placeholder='Link'
+            >
+            </input> */}
             <input
               value={image.alt}
               onChange={handleChange}
               name="alt"
               placeholder='Alt Text'>
             </input>
- <button onClick={() => createImage()}>Display your Entry</button>
+            <button onClick={() => createImage()}>Submit?</button>
           </div>
         </div>
         <hr></hr>
@@ -188,35 +189,30 @@ export default function Image() {
           <div className='collumns'>
             {images.map((image) => {
               return (
-                <section key={image._id} className="w-75 p-3">
-
-                  <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
-
-                  <div>
-                    {/* <img src={image.link} alt={image.alt}></img> */}
-                    <p onClick={() => setShowInput(!showInput)}>{image.alt}
-                      <input
-                        ref={inputRef}
-                        style={{ display: showInput ? 'block' : 'none' }}
-                        type='text'
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault()
-                            // const text = inputRef.current.value
-                            updateImage(image._id, { alt: e.target.value })
-                            setShowInput(false)
-
-                          }
-                        }}
-                        defaultValue='...'
-                      />
-                    </p>
-
-                    <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}</button>
+                <>
+                  <div key={image._id} className="imageContainer">
+                    <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
+                    <div>
+                      <p onClick={() => setShowInput(!showInput)}>{image.alt}
+                        <input
+                          ref={inputRef}
+                          style={{ display: showInput ? 'block' : 'none' }}
+                          type='text'
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                              // const text = inputRef.current.value
+                              updateImage(image._id, { alt: e.target.value })
+                              setShowInput(false)
+                            }
+                          }}
+                          defaultValue='...'
+                        />
+                      </p>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
+                    </div>
                   </div>
-
-                </section>
-
+                </>
               )
             }
             )
@@ -225,6 +221,5 @@ export default function Image() {
         }
       </div>
     </>
-
   )
 }

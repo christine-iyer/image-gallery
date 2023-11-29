@@ -12,17 +12,17 @@ div {
 }
 .collumns{
   display: flex;
-  border: solid 4px rgb(20, 20, 20);
-  /* justify-content: space-evenly; */
-  height: 37em;
-  /* align-items: flex-end; */
+  justify-content: space-evenly;
+  align-items: flex-end;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
   overflow-wrap: inherit;
+border-style: dashed;
+border-color: antiquewhite;
 
 }
-section{
+/* section{
 
         width: 50;
         height: 50;
@@ -32,10 +32,19 @@ section{
         border-top: 1rem;
         border-width: 1rem;
         text-align: center;
-}
+} */
 p{
   font-size:xx-small;
   text-align: left;
+}
+.btn{
+  border: none;
+  background-color: white;
+}
+.imageContainer {
+  border-style:dotted;
+  margin: 1rem;
+
 }
 
 
