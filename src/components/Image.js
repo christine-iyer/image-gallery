@@ -179,9 +179,9 @@ export default function Image() {
               value={image.alt}
               onChange={handleChange}
               name="alt"
-              placeholder='Alt Text'>
+              placeholder='Caption'>
             </input>
-            <button onClick={() => createImage()}>Submit?</button>
+            <button onClick={() => createImage()}>Add to Gallery</button>
           </div>
         </div>
         <hr></hr>
@@ -210,6 +210,7 @@ export default function Image() {
                         />
                       </p>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
                     </div>
                   </div>
                 </>

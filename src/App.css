@@ -18,8 +18,10 @@ div {
   align-items: center;
   flex-wrap: wrap;
   overflow-wrap: inherit;
-border-style: dashed;
-border-color: antiquewhite;
+border-style:double;
+border-width: thick;
+border-color: goldenrod;
+
 
 }
 /* section{
@@ -42,7 +44,9 @@ p{
   background-color: white;
 }
 .imageContainer {
-  border-style:dotted;
+  border-color: peru;
+  border-style:groove;
+  border-width: thick;
   margin: 1rem;
 
 }
