@@ -139,7 +139,7 @@ const [showInput, setShowInput] = useState(false)
      <>
  
        <section>
-         <h1>Post Shamelessly</h1>
+         <h1>Lorelei's Art</h1>
          <div>
            <span>
              <UploadWidget onUpload={handleOnUpload}>
