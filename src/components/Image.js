@@ -167,14 +167,21 @@ export default function Image() {
                 </div>
               )}
             </span>
-            {/* <input
-              type='text'
-              src={image.link}
-              onChange={handleChange}
-              name="link"
-              placeholder='Link'
-            >
-            </input> */}
+            <label>Pick a category:
+            <select 
+            options={image.category} 
+            value={image.category} 
+            onChange={handleChange} 
+            placeholder='Category'
+            name="category">
+              <option value="🟪">🟪</option>
+              <option  value="🟦">🟦</option>
+              <option  value="🟧">🟧</option>
+              <option  value="⬜️">⬜️</option>
+              <option  value="🟥">🟥</option>
+            </select>
+            </label>
+
             <input
               value={image.alt}
               onChange={handleChange}
