@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
+import styles from './Image.module.scss'
+import setClass from '../utilities/category-class'
 import '../App.css'
 
 export default function Image() {
@@ -44,6 +46,7 @@ export default function Image() {
       setImage({
         link: '',
         alt: '',
+        category:'',
         likes: 0
       })
     } catch (error) {
@@ -197,7 +200,7 @@ export default function Image() {
             {images.map((image) => {
               return (
                 <>
-                  <div key={image._id} className="imageContainer">
+                  <div key={image._id} className={setClass(image,styles)}>
                     <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
                     <div>
                       <p onClick={() => setShowInput(!showInput)}>{image.alt}
@@ -216,7 +219,7 @@ export default function Image() {
                           defaultValue='...'
                         />
                       </p>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
+                      <button style={{ 'fontStyle': 'italic' }} className={styles.button} onClick={() => likeImage(image._id)}> {image.likes}💜</button>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
                     </div>
                   </div>
