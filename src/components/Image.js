@@ -46,7 +46,7 @@ export default function Image() {
       setImage({
         link: '',
         alt: '',
-        category:'',
+        category: '',
         likes: 0
       })
     } catch (error) {
@@ -171,20 +171,19 @@ export default function Image() {
               )}
             </span>
             <label>Pick a category:
-            <select 
-            options={image.category} 
-            value={image.category} 
-            onChange={handleChange} 
-            placeholder='Category'
-            name="category">
-              <option value="🟪">🟪</option>
-              <option  value="🟦">🟦</option>
-              <option  value="🟧">🟧</option>
-              <option  value="⬜️">⬜️</option>
-              <option  value="🟥">🟥</option>
-            </select>
+              <select
+                options={image.category}
+                value={image.category}
+                onChange={handleChange}
+                placeholder='Category'
+                name="category">
+                <option value="Work">Work</option>
+                <option value="Family">Family</option>
+                <option value="Code">Code</option>
+                <option value="Misc">Misc</option>
+                <option value="Friends">Friends</option>
+              </select>
             </label>
-
             <input
               value={image.alt}
               onChange={handleChange}
@@ -196,39 +195,37 @@ export default function Image() {
         </div>
         <hr></hr>
         {images && images.length ? (
-          <div key={image._id} className='collumns'>
+          <ul key={image._id} className='collumns'>
             {images.map((image) => {
               return (
                 <>
-                  <div className={setClass(image,styles)}>
+                  <li className={setClass(image, styles)}>
                     <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
-                    <div>
-                      <p onClick={() => setShowInput(!showInput)}>{image.alt}
-                        <input
-                          ref={inputRef}
-                          style={{ display: showInput ? 'block' : 'none' }}
-                          type='text'
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault()
-                              // const text = inputRef.current.value
-                              updateImage(image._id, { alt: e.target.value })
-                              setShowInput(false)
-                            }
-                          }}
-                          defaultValue='...'
-                        />
-                      </p>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
-                    </div>
-                  </div>
+                    <p onClick={() => setShowInput(!showInput)}>{image.alt}
+                      <input
+                        ref={inputRef}
+                        style={{ display: showInput ? 'block' : 'none' }}
+                        type='text'
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.preventDefault()
+                            // const text = inputRef.current.value
+                            updateImage(image._id, { alt: e.target.value })
+                            setShowInput(false)
+                          }
+                        }}
+                        defaultValue='...'
+                      />
+                    </p>
+                    <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
+                    <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
+                  </li>
                 </>
               )
             }
-            )
-            }
-          </div>) : <>No Entries yet! Yet Add One Below this message</>
+            )}
+          </ul>) :
+          <>No Entries yet! Yet Add One Below this message</>
         }
       </div>
     </>
