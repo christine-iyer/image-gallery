@@ -50,6 +50,9 @@ p{
   margin: 1rem;
 
 }
+li {
+  marker: none;
+}
 
 
 

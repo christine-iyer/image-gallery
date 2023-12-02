@@ -11,6 +11,7 @@ export default function Image() {
   const [image, setImage] = useState({
     link: '',
     alt: '',
+    category:'',
     likes: 0
   })
   const [showInput, setShowInput] = useState(false)
@@ -199,7 +200,7 @@ export default function Image() {
             {images.map((image) => {
               return (
                 <>
-                  <li className={setClass(image, styles)}>
+                  <li className={setClass(image, styles)} >
                     <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
                     <p onClick={() => setShowInput(!showInput)}>{image.alt}
                       <input
@@ -208,13 +209,13 @@ export default function Image() {
                         type='text'
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
-                            e.preventDefault()
-                            // const text = inputRef.current.value
-                            updateImage(image._id, { alt: e.target.value })
+                            // e.preventDefault()
+                           const alt = inputRef.current.value
+                            updateImage(image._id, { alt })
                             setShowInput(false)
                           }
                         }}
-                        defaultValue='...'
+                        defaultValue={image.alt}
                       />
                     </p>
                     <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
