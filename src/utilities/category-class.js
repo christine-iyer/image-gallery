@@ -1,17 +1,17 @@
 export default function setClass(image, styles){
-     if(image.category === 'Work'){
-          return styles.work
+     if(image.category === 'Paint'){
+          return styles.paint
      }
-     if(image.category === 'Family'){
-          return styles.family
+     if(image.category === 'Markers'){
+          return styles.markers
      }
-     if(image.category === 'Code'){
-          return styles.code
+     if(image.category === 'Crayons'){
+          return styles.crayons
      }
-     if(image.category === 'Misc'){
-          return styles.misc
+     if(image.category === 'Mixed'){
+          return styles.mixed
      }
-     if(image.category === 'Friends'){
-          return styles.friends
+     if(image.category === 'Schoolwork'){
+          return styles.schoolwork
      }
 }

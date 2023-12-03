@@ -171,25 +171,27 @@ export default function Image() {
                 </div>
               )}
             </span>
-            <label>Pick a category:
+            
               <select
                 options={image.category}
                 value={image.category}
                 onChange={handleChange}
-                placeholder='Category'
-                name="category">
-                <option value="Work">Work</option>
-                <option value="Family">Family</option>
-                <option value="Code">Code</option>
-                <option value="Misc">Misc</option>
-                <option value="Friends">Friends</option>
+                defaultValue={"placeholder"}
+                name="category"
+                >
+                  <option value={"placeholder"}>Choose Medium</option>
+                <option value="Paint">Paint</option>
+                <option value="Markers">Markers</option>
+                <option value="Crayons">Crayons</option>
+                <option value="Mixed">Mixed</option>
+                <option value="Schoolwork">Schoolwork</option>
               </select>
-            </label>
+          
             <input
               value={image.alt}
               onChange={handleChange}
               name="alt"
-              placeholder='Caption'>
+              placeholder='Caption:'>
             </input>
             <button onClick={() => createImage()}>Add to Gallery</button>
           </div>
@@ -209,9 +211,9 @@ export default function Image() {
                         type='text'
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
-                            // e.preventDefault()
-                           const alt = inputRef.current.value
-                            updateImage(image._id, { alt })
+                            e.preventDefault()
+                           //const alt = inputRef.current.value
+                            updateImage(image._id, { alt: e.target.value })
                             setShowInput(false)
                           }
                         }}
