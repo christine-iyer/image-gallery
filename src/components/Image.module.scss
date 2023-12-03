@@ -1,37 +1,57 @@
 .schoolwork {
-     border-color: rebeccapurple;
-     margin: 2px;
-     padding: 5px;
-     border-radius: 15%;
-     box-shadow: 2px 2px 2px 1px rgba(102, 101, 87, 0.2);
+     border: 10px solid transparent;
+     // padding: 1px;
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/cguvikdnirpk8ramxyp1.png) 30 round;
+
+     // border-color: rebeccapurple;
+     // margin: 2px;
+     // padding: 5px;
+     // border-radius: 15%;
+     // box-shadow: 2px 2px 2px 1px rgba(102, 101, 87, 0.2);
 }
 .markers {
-     border-color: blue;
-     margin: 2px;
-     padding: 5px;
-     border-radius: 5%;
+     border: 10px solid transparent;
+     padding: 1px;
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
+
+     // border-color: blue;
+     // margin: 2px;
+     // padding: 5px;
+     // border-radius: 5%;
 
 }
 .paint {
-     border-color: green;
-     margin: 2px;
-     padding: 5px;
-     border-radius: 5%;
+     // border-color: green;
+     // margin: 2px;
+     // padding: 5px;
+     // border-radius: 5%;
+     border: 10px solid transparent;
+     padding: 1px;
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
+
 
 }
 .crayons {
-     border-color: red;
-     margin: 2px;
-     padding: 5px;
-     border-radius: 5%;
-     font-style: italic;
+     border: 10px solid transparent;
+     padding: 1px;
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
+
+     // border-color: red;
+     // margin: 2px;
+     // padding: 5px;
+     // border-radius: 5%;
+     // font-style: italic;
 
 }
 .mixed {
-     border-color: turquoise;
-     margin: 2px;
-     padding: 5px;
-  border-radius: 5%;
+     border: 10px solid transparent;
+     padding: 1px;
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
+
+//      border-color: turquoise;
+//      margin: 2px;
+//      padding: 5px;
+//   border-radius: 5%;
 
 }
 
