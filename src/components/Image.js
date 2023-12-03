@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
+
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { makeStyles } from "@material-ui/core/styles";
+// import { Carousel } from 'react-carousel-minimal';
 import setClass from '../utilities/category-class'
 import '../App.css'
 import styles from './Image.module.scss'
@@ -11,7 +15,7 @@ export default function Image() {
   const [image, setImage] = useState({
     link: '',
     alt: '',
-    category:'',
+    category: '',
     likes: 0
   })
   const [showInput, setShowInput] = useState(false)
@@ -117,6 +121,27 @@ export default function Image() {
       console.error(error)
     }
   }
+  // const useStyles = makeStyles({
+  //   captionStyle :{
+  //      fontSize: '2em',
+  //      fontWeight: 'bold',
+  //    },
+  //     slideNumberStyle:{
+  //      fontSize: '20px',
+  //      fontWeight: 'bold',
+  //    }
+   
+   
+     
+  //  });
+  //  const captionStyle = {
+  //    fontSize: '2em',
+  //    fontWeight: 'bold',
+  //  }
+  //  const slideNumberStyle = {
+  //    fontSize: '20px',
+  //    fontWeight: 'bold',
+  //  }
   useEffect(() => {
     getImages()
   }, [foundImages])
@@ -171,22 +196,22 @@ export default function Image() {
                 </div>
               )}
             </span>
-            
-              <select
-                options={image.category}
-                value={image.category}
-                onChange={handleChange}
-                defaultValue={"placeholder"}
-                name="category"
-                >
-                  <option value={"placeholder"}>Choose Medium</option>
-                <option value="Paint">Paint</option>
-                <option value="Markers">Markers</option>
-                <option value="Crayons">Crayons</option>
-                <option value="Mixed">Mixed</option>
-                <option value="Schoolwork">Schoolwork</option>
-              </select>
-          
+
+            <select
+              options={image.category}
+              value={image.category}
+              onChange={handleChange}
+              defaultValue={"placeholder"}
+              name="category"
+            >
+              <option value={"placeholder"}>Choose Medium</option>
+              <option value="Paint">Paint</option>
+              <option value="Markers">Markers</option>
+              <option value="Crayons">Crayons</option>
+              <option value="Mixed Medium">Mixed</option>
+              <option value="Schoolwork">Schoolwork</option>
+            </select>
+
             <input
               value={image.alt}
               onChange={handleChange}
@@ -197,39 +222,43 @@ export default function Image() {
           </div>
         </div>
         <hr></hr>
-        {images && images.length ? (
-          <ul key={image._id} className='collumns'>
-            {images.map((image) => {
-              return (
-                <>
-                  <li className={setClass(image, styles)} >
-                    <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
-                    <p onClick={() => setShowInput(!showInput)}>{image.alt}
-                      <input
-                        ref={inputRef}
-                        style={{ display: showInput ? 'block' : 'none' }}
-                        type='text'
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault()
-                           //const alt = inputRef.current.value
-                            updateImage(image._id, { alt: e.target.value })
-                            setShowInput(false)
-                          }
-                        }}
-                        defaultValue={image.alt}
-                      />
-                    </p>
-                    <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
-                    <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
-                  </li>
-                </>
-              )
-            }
-            )}
-          </ul>) :
-          <>No Entries yet! Yet Add One Below this message</>
-        }
+        <div>
+          {images && images.length ? (
+            <ul key={image.id} className='collumns'>
+              {images.map((image) => {
+                return (
+                  <>
+                  <div>
+                    <li  className={setClass(image, styles)} >
+                      <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
+                      <p onClick={() => setShowInput(!showInput)}>{image.alt}
+                        <input
+                          ref={inputRef}
+                          style={{ display: showInput ? 'block' : 'none' }}
+                          type='text'
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                              //const alt = inputRef.current.value
+                              updateImage(image._id, { alt: e.target.value })
+                              setShowInput(false)
+                            }
+                          }}
+                          defaultValue={image.alt}
+                        />
+                      </p>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
+                    </li>
+                    </div>
+                  </>
+                )
+              }
+              )}
+            </ul>) :
+            <>No Entries yet! Yet Add One Below this message</>
+          }
+        </div>
       </div>
     </>
   )
