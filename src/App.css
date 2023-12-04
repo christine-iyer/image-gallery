@@ -1,6 +1,6 @@
 .App {
   text-align: left;
-  width: 85%;
+  width: 100%;
 
   padding: 2rem;
 }
@@ -50,9 +50,6 @@ p{
   border-width: thick;
   margin: 1rem;
 
-}
-li {
-  marker: none;
 }
 
 

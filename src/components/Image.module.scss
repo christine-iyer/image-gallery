@@ -1,8 +1,8 @@
 .schoolwork {
      border: 10px solid transparent;
-     marker: none;
+     border-color: rgb(89, 89, 209);
      // padding: 1px;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/cguvikdnirpk8ramxyp1.png) 30 round;
+     //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/cguvikdnirpk8ramxyp1.png) 30 round;
 
      // border-color: rebeccapurple;
      // margin: 2px;
@@ -11,12 +11,12 @@
      // box-shadow: 2px 2px 2px 1px rgba(102, 101, 87, 0.2);
 }
 .markers {
-     border: 10px solid transparent;
-     marker: none;
-     padding: 1px;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/cjsiuhdpkxl1s4zrytzv.jpg) 30 round;
 
-     // border-color: blue;
+     border: 10px solid transparent;
+     // padding: 1%;
+     //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/cjsiuhdpkxl1s4zrytzv.jpg) 30 round;
+
+     border-color: rgb(230, 230, 249);
      // margin: 2px;
      // padding: 5px;
      // border-radius: 5%;
@@ -27,19 +27,19 @@
      // margin: 2px;
      // padding: 5px;
      // border-radius: 5%;
-     marker: none;
      border: 10px solid transparent;
-     padding: 1px;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/idhrvuzxoyxkums9lcc2.jpg) 30 round;
+     border-color: rgb(249, 237, 230);
+     
+     // padding: 1px;
+     //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/idhrvuzxoyxkums9lcc2.jpg) 30 round;
 
 
 }
 .crayons {
+   
      border: 10px solid transparent;
-     marker: none;
-     padding: 1px;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
-
+     //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
+     border-color: rgb(110, 53, 19);
      // border-color: red;
      // margin: 2px;
      // padding: 5px;
@@ -49,9 +49,9 @@
 }
 .mixed {
      border: 10px solid transparent;
-     marker: none;
+     border-color: rgb(230, 249, 230);
      padding: 1px;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/ag2venovfdq4stxvgn0l.jpg) 30 round;
+    // border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/ag2venovfdq4stxvgn0l.jpg) 30 round;
 
 //      border-color: turquoise;
 //      margin: 2px;
@@ -76,7 +76,4 @@
      list-style: none;
      border: none;
 
-}
-li {
-     marker: none;
 }

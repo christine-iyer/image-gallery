@@ -207,7 +207,7 @@ export default function Image() {
                   <>
                   <div>
                     <div key={image.id} className={setClass(image, styles)} >
-                      <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
+                      <img style={{ "maxWidth": "100%", "height": "15vw",objectFit:"contain" }} src={image.link} alt={image.alt} />
                       </div>
                       <p onClick={() => setShowInput(!showInput)}>{image.alt}
                         <input
