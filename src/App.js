@@ -1,10 +1,12 @@
 import './App.css';
-import Image from './components/Image';
+import Image from './components/Image'
+
 
 function App() {
   return (
     <div className="App">
-     <Image />
+     <
+      Image />
     </div>
   );
 }

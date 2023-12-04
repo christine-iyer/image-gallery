@@ -2,11 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { makeStyles } from "@material-ui/core/styles";
-// import { Carousel } from 'react-carousel-minimal';
 import setClass from '../utilities/category-class'
-import '../App.css'
+// import '../App.css'
 import styles from './Image.module.scss'
 
 export default function Image() {
@@ -121,27 +118,7 @@ export default function Image() {
       console.error(error)
     }
   }
-  // const useStyles = makeStyles({
-  //   captionStyle :{
-  //      fontSize: '2em',
-  //      fontWeight: 'bold',
-  //    },
-  //     slideNumberStyle:{
-  //      fontSize: '20px',
-  //      fontWeight: 'bold',
-  //    }
-   
-   
-     
-  //  });
-  //  const captionStyle = {
-  //    fontSize: '2em',
-  //    fontWeight: 'bold',
-  //  }
-  //  const slideNumberStyle = {
-  //    fontSize: '20px',
-  //    fontWeight: 'bold',
-  //  }
+
   useEffect(() => {
     getImages()
   }, [foundImages])
@@ -224,13 +201,14 @@ export default function Image() {
         <hr></hr>
         <div>
           {images && images.length ? (
-            <ul key={image.id} className='collumns'>
+            <div  className='collumns'>
               {images.map((image) => {
                 return (
                   <>
                   <div>
-                    <li  className={setClass(image, styles)} >
+                    <div key={image.id} className={setClass(image, styles)} >
                       <img style={{ "maxWidth": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
+                      </div>
                       <p onClick={() => setShowInput(!showInput)}>{image.alt}
                         <input
                           ref={inputRef}
@@ -249,16 +227,17 @@ export default function Image() {
                       </p>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
-                    </li>
+                    
                     </div>
                   </>
                 )
               }
               )}
-            </ul>) :
+            </div>) :
             <>No Entries yet! Yet Add One Below this message</>
           }
         </div>
+
       </div>
     </>
   )
