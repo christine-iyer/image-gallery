@@ -3,33 +3,36 @@
      border-color: rgb(89, 89, 209);
      // padding: 1px;
      //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/cguvikdnirpk8ramxyp1.png) 30 round;
-
+     object-fit: contain;
      // border-color: rebeccapurple;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 15%;
+     margin: 2px;
+     padding: 5px;
+     border-radius: 5%;
      // box-shadow: 2px 2px 2px 1px rgba(102, 101, 87, 0.2);
 }
 .markers {
+     
 
      border: 10px solid transparent;
+     object-fit: contain;
      // padding: 1%;
      //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/cjsiuhdpkxl1s4zrytzv.jpg) 30 round;
 
      border-color: rgb(230, 230, 249);
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
+     margin: 2px;
+     padding: 5px;
+     border-radius: 5%;
 
 }
 .paint {
      // border-color: green;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
+     margin: 2px;
+     padding: 5px;
+     border-radius: 5%;
      border: 10px solid transparent;
+
      border-color: rgb(249, 237, 230);
-     
+     object-fit: contain;
      // padding: 1px;
      //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/idhrvuzxoyxkums9lcc2.jpg) 30 round;
 
@@ -40,10 +43,11 @@
      border: 10px solid transparent;
      //border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/pbp4izjbcedwa5bifk7w.jpg) 30 round;
      border-color: rgb(110, 53, 19);
+     object-fit: contain;
      // border-color: red;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
+     margin: 2px;
+     padding: 5px;
+     border-radius: 5%;
      // font-style: italic;
 
 }
@@ -51,12 +55,14 @@
      border: 10px solid transparent;
      border-color: rgb(230, 249, 230);
      padding: 1px;
+
+     object-fit: contain;
     // border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/ag2venovfdq4stxvgn0l.jpg) 30 round;
 
 //      border-color: turquoise;
-//      margin: 2px;
-//      padding: 5px;
-//   border-radius: 5%;
+     margin: 2px;
+     padding: 5px;
+  border-radius: 5%;
 
 }
 

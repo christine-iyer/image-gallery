@@ -4,13 +4,13 @@
 
   padding: 2rem;
 }
-div {
+/* div {
   flex-direction: row;
   margin: 1fr;
   padding: 0.5rem;
   flex-wrap: 'wrap';
 
-}
+} */
 .collumns{
   display: flex;
   justify-content: space-evenly;
@@ -25,17 +25,7 @@ border-color: goldenrod;
 
 
 }
-/* section{
 
-        width: 50;
-        height: 50;
-        align-content: 'space-between';
-        justify-content: center;
-        padding-left: 1rem;
-        border-top: 1rem;
-        border-width: 1rem;
-        text-align: center;
-} */
 p{
   font-size:xx-small;
   text-align: left;
