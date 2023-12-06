@@ -205,9 +205,9 @@ export default function Image() {
               {images.map((image) => {
                 return (
                   <>
-                  <div >
+                  <div style={{"display":"flex", "justifyContent": "space-evenly"}}>
                     <div key={image.id} className={setClass(image, styles)} >
-                      <img style={{ "borderRadius":"5%","objectFit":"contain","maxWidth": "100%", "height": "15vw"}} src={image.link} alt={image.alt} />
+                      <img style={{ "borderRadius":"5%","objectFit":"contain","width": "100%", "height": "15vw"}} src={image.link} alt={image.alt} />
                       </div>
                       <p onClick={() => setShowInput(!showInput)}>{image.alt}
                         <input
