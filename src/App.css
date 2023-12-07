@@ -1,16 +1,17 @@
 .App {
   text-align: left;
-  width: 100%;
+  width: 98%;
+background-color: antiquewhite;
+  padding: 4rem;
 
-  padding: 2rem;
 }
-/* div {
+div {
   flex-direction: row;
   margin: 1fr;
   padding: 0.5rem;
   flex-wrap: 'wrap';
 
-} */
+}
 .collumns{
   display: flex;
   justify-content: space-evenly;
@@ -19,9 +20,8 @@
   align-items: center;
   flex-wrap: wrap;
   overflow-wrap: inherit;
-border-style:double;
-border-width: thick;
-border-color: goldenrod;
+
+
 
 
 }
