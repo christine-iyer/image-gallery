@@ -5,6 +5,7 @@ import UploadWidget from './UploadWidget';
 import setClass from '../utilities/category-class'
 // import '../App.css'
 import styles from './Image.module.scss'
+import moment from 'moment'
 
 export default function Image() {
   const [foundImages, setFoundImages] = useState(null)
@@ -185,7 +186,7 @@ export default function Image() {
               <option value="Paint">Paint</option>
               <option value="Markers">Markers</option>
               <option value="Crayons">Crayons</option>
-              <option value="Mixed Medium">Mixed</option>
+              <option value="Mixed">Mixed</option>
               <option value="Schoolwork">Schoolwork</option>
             </select>
 
@@ -199,17 +200,18 @@ export default function Image() {
           </div>
         </div>
         <hr></hr>
-        <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(240px, 1fr))"}}>
+        <div style={{display:"grid"}}>
           {images && images.length ? (
             <div className='collumns'>
               {images.map((image) => {
                 return (
                   <>
-                    <div style={{ "display": "flex", "justifyContent": "space-evenly" }}>
+                    <div style={{ "display": "flex", "flexWrap": "wrap" }}>
                       <div key={image.id} className={setClass(image, styles)} >
                         <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
                      
-                      <p onClick={() => setShowInput(!showInput)}>{image.alt}
+                      <p onClick={() => setShowInput(!showInput)}>{image.alt} moment({image.createdAt})
+
                         <input
                           ref={inputRef}
                           style={{ display: showInput ? 'block' : 'none' }}
@@ -226,7 +228,7 @@ export default function Image() {
                         />
                       </p>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>🗑️</button>
                     </div>
                      </div>
                   </>
