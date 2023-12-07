@@ -199,16 +199,16 @@ export default function Image() {
           </div>
         </div>
         <hr></hr>
-        <div>
+        <div style={{display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(240px, 1fr))"}}>
           {images && images.length ? (
-            <div  className='collumns'>
+            <div className='collumns'>
               {images.map((image) => {
                 return (
                   <>
-                  <div style={{"display":"flex", "justifyContent": "space-evenly"}}>
-                    <div key={image.id} className={setClass(image, styles)} >
-                      <img style={{ "borderRadius":"5%","objectFit":"contain","width": "100%", "height": "15vw"}} src={image.link} alt={image.alt} />
-                      </div>
+                    <div style={{ "display": "flex", "justifyContent": "space-evenly" }}>
+                      <div key={image.id} className={setClass(image, styles)} >
+                        <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
+                     
                       <p onClick={() => setShowInput(!showInput)}>{image.alt}
                         <input
                           ref={inputRef}
@@ -227,17 +227,17 @@ export default function Image() {
                       </p>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>❌</button>
-                    
                     </div>
+                     </div>
                   </>
                 )
               }
               )}
-            </div>) :
-            <>No Entries yet! Yet Add One Below this message</>
+            </div>)
+            :
+            <> No Entries yet! Yet Add One Below this message </>
           }
         </div>
-
       </div>
     </>
   )
