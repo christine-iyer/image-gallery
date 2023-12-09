@@ -4,85 +4,34 @@
 // }
 .schoolwork {
      border: 10px solid transparent;
-     // border-color: #efe5fd;
-     // padding: 1px;
-    border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/co7m25hmtugvn3nsfvqg.png) 30 round;
-     // object-fit: contain;
-     // border-color: rebeccapurple;
-     margin: 5px;
-     padding: 7%;
-     // border-radius: 5%;
-     // box-shadow: 2px 2px 2px 1px rgba(102, 101, 87, 0.2);
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/co7m25hmtugvn3nsfvqg.png) 30 round;
+     border-radius: 5%;
 }
-
+.optionOne{
+     color: purple;
+}
 .markers {
-
-
      border: 10px solid transparent;
-     // object-fit: contain;
-     // padding: 1%;
      border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701957302/or8z9nmoy7pn0cdzugrd.png) 30 round;
-
-     // border-color: #f2fde4;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
-
+     border-radius: 5%;
 }
 
 .paint {
-     // border-color: green;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
+     border-radius: 5%;
      border: 10px solid transparent;
-
-     // border-color: #eee6ff;
-     // object-fit: contain;
-     // padding: 1px;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/od5v1uvqoiif9d08zgpd.jpg) 30 round;
-
-
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/od5v1uvqoiif9d08zgpd.png) 30 round;
 }
 
 .crayons {
-
+     border-radius: 5%;
      border: 10px solid transparent;
-    border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701985826/c79raip3gzo23whfiris.png) 30 round;
-
-     // border-color: #a4aca4;
-     // object-fit: contain;
-     // border-color: red;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
-     // font-style: italic;
-
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701985826/c79raip3gzo23whfiris.png) 30 round;
 }
 
 .mixed {
      border: 10px solid transparent;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/od5v1uvqoiif9d08zgpd.jpg) 30 round;
-     // border-color: #adb3bd;
-     // object-fit: contain;
-     // // border-color: red;
-     // margin: 2px;
-     // padding: 5px;
-     // border-radius: 5%;
-     // font-style: italic;
-
-//      border: 10px solid transparent;
-//      border-color: rgb(230, 249, 230);
-//      padding: 1px;
-
-//      object-fit: contain;
-//      // border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/ag2venovfdq4stxvgn0l.jpg) 30 round;
-
-//      //      border-color: turquoise;
-//      margin: 2px;
-//      padding: 5px;
-//      border-radius: 5%;
-
+     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/n0jdn1gtcoorkmcufepl.png) 30 round;
+     border-radius: 5%;
 }
 
 .button {

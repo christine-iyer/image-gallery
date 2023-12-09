@@ -24,6 +24,11 @@ export default function Image() {
     setImage({ ...image, [evt.target.name]: evt.target.value })
   }
 
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric"}
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
+
   const getImages = async () => {
     try {
       const response = await fetch('/api/images')
@@ -182,7 +187,7 @@ export default function Image() {
               defaultValue={"placeholder"}
               name="category"
             >
-              <option value={"placeholder"}>Choose Medium</option>
+              <option className= 'optionOne' value={"placeholder"}>Choose Medium</option>
               <option value="Paint">Paint</option>
               <option value="Markers">Markers</option>
               <option value="Crayons">Crayons</option>
@@ -210,7 +215,7 @@ export default function Image() {
                       <div key={image.id} className={setClass(image, styles)} >
                         <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
                      
-                      <p onClick={() => setShowInput(!showInput)}>{image.alt} moment({image.createdAt})
+                      <p onClick={() => setShowInput(!showInput)}>{image.alt}. Posted on {new Date(image.createdAt).toLocaleDateString()}.
 
                         <input
                           ref={inputRef}
