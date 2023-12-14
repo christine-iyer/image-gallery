@@ -102,3 +102,8 @@ export default SearchParams;
 ```
 
 Also look at this link.
+
+App loads structure. And takes search params and details. 
+
+Details and Pet are much the same...
+The api queries are kept in separate files. we dont need useBreedList or fetch Breed List.
