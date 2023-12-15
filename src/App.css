@@ -28,6 +28,7 @@ div {
 
 p{
   font-size:xx-small;
+  color: var(--blue-1);
   text-align: left;
 }
 .btn{
