@@ -1,7 +1,7 @@
 require('dotenv').config()
 const Image = require('../../models/image')
 
-const destroyImage = async (req, res, next) => {
+const deleteImage = async (req, res, next) => {
      try {
          const deletedImage = await Image.findByIdAndDelete(req.params.id)
          res.locals.data.image = deletedImage
@@ -52,7 +52,7 @@ const destroyImage = async (req, res, next) => {
  
  
  module.exports = {
-     destroyImage,
+     deleteImage,
      updateImage,
      getImages,
      createImage,
