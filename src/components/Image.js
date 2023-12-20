@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
-import Progress from './Progress'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import setClass from '../utilities/category-class'
 // import '../App.css'
@@ -20,16 +19,13 @@ export default function Image() {
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
-  const [progress, setProgress] = useState(80);
+  
   const inputRef = useRef(null)
   const handleChange = (evt) => {
     setImage({ ...image, [evt.target.name]: evt.target.value })
   }
 
-  const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric"}
-    return new Date(dateString).toLocaleDateString(undefined, options)
-  }
+
 
   const getImages = async () => {
     try {
@@ -149,7 +145,6 @@ export default function Image() {
       likes: 0
     })
     
-    setProgress(50)
   }
   return (
     <>
@@ -157,7 +152,7 @@ export default function Image() {
         <h1>Lorelei's Art</h1>
         <div className='uploadForm'>
           <div>
-            <Progress variant="success" now={40} />
+          
             <span>
               <UploadWidget onUpload={handleOnUpload}>
                 {({ open }) => {
