@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from './UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import setClass from '../utilities/category-class'
+import setClass from './../../utilities/category-class'
 // import '../App.css'
 import styles from './Image.module.scss'
 
