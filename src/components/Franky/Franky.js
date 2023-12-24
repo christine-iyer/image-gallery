@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
-import UploadWidget from './UploadWidget';
+import UploadWidget from '../Image/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
 
@@ -17,10 +17,10 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit';
 
-export default function Blahg() {
-  const [foundBlahgs, setFoundBlahgs] = useState(null)
-  const [blahgs, setBlahgs] = useState([])
-  const [blahg, setBlahg] = useState({
+export default function Franky() {
+  const [foundFrankys, setFoundFrankys] = useState(null)
+  const [frankys, setFrankys] = useState([])
+  const [franky, setFranky] = useState({
     title: '',
     author: '',
     category: '',
@@ -33,32 +33,31 @@ export default function Blahg() {
   const [error, updateError] = useState();
   const inputRef = useRef(null)
   const handleChange = (evt) => {
-    setBlahg({ ...blahg, [evt.target.name]: evt.target.value })
+    setFranky({ ...franky, [evt.target.name]: evt.target.value })
   }
-  const getBlahgs = async () => {
+  const getFrankys = async () => {
     try {
-      const response = await fetch('/api/blahgs')
+      const response = await fetch('/api/frankys')
       const data = await response.json()
-      setBlahgs(data)
+      setFrankys(data)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const createBlahg = async () => {
+  const createFranky = async () => {
     try {
-      const response = await fetch('/api/blahgs', {
+      const response = await fetch('/api/frankys', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...blahg })
+        body: JSON.stringify({ ...franky })
       })
       const data = await response.json()
-      setFoundBlahgs(data)
-      setBlahg({
+      setFoundFrankys(data)
+      setFranky({
         title: '',
-        createdDate: '',
         author: '',
         category: '',
         text: '',
@@ -70,28 +69,23 @@ export default function Blahg() {
     }
   }
 
-
-  const deleteBlahg = async (id) => {
+const deleteFranky = async (id) => {
     try {
-      const response = await fetch(`/api/blahgs/${id}`, {
+      const response = await fetch(`/api/frankys/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         }
       })
       const data = await response.json()
-      // const blahgsCopy = [...blahgs]
-      // const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      // blahgsCopy.splice(index, 1)
-      // setBlahgs(blahgsCopy)
-      setFoundBlahgs(data)
+      setFoundFrankys(data)
     } catch (error) {
       console.error(error)
     }
   }
-  const updateBlahg = async (id, updatedData) => {
+  const updateFranky = async (id, updatedData) => {
     try {
-      const response = await fetch(`/api/blahgs/${id}`, {
+      const response = await fetch(`/api/frankys/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -99,43 +93,43 @@ export default function Blahg() {
         body: JSON.stringify(updatedData)
       })
       const data = await response.json()
-      setFoundBlahgs(data)
-      const blahgsCopy = [...blahgs]
-      const index = blahgsCopy.findIndex(blahg => id === blahg._id)
-      blahgsCopy[index] = { ...blahgsCopy[index], ...updatedData }
-      setBlahgs(blahgsCopy)
+      setFoundFrankys(data)
+      const frankysCopy = [...frankys]
+      const index = frankysCopy.findIndex(franky => id === franky._id)
+      frankysCopy[index] = { ...frankysCopy[index], ...updatedData }
+      setFrankys(frankysCopy)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const likeBlahg = async (id) => {
+  const likeFranky = async (id) => {
     try {
-      const index = blahgs.findIndex((blahg) => blahg._id === id)
-      const blahgsCopy = [...blahgs]
-      const subject = blahgsCopy[index]
+      const index = frankys.findIndex((franky) => franky._id === id)
+      const frankysCopy = [...frankys]
+      const subject = frankysCopy[index]
       subject.like = subject.like + 1
-      const response = await fetch(`/api/blahgs/${id}`, {
+      const response = await fetch(`/api/frankys/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(subject)
       })
-      const updatedBlahg = await response.json()
-      const completedBlahgsCopy = [updatedBlahg, ...blahgs]
+      const updatedFranky = await response.json()
+      const completedFrankysCopy = [updatedFranky, ...frankys]
 
-      setBlahgs(completedBlahgsCopy)
-      // blahgsCopy.splice(index, 1)
-      setBlahgs(blahgsCopy)
+      setFrankys(completedFrankysCopy)
+      // frankysCopy.splice(index, 1)
+      setFrankys(frankysCopy)
 
     } catch (error) {
       console.error(error)
     }
   }
   useEffect(() => {
-    getBlahgs()
-  }, [foundBlahgs])
+    getFrankys()
+  }, [foundFrankys])
 
   function handleOnUpload(error, result, widget) {
     if (error) {
@@ -148,7 +142,7 @@ export default function Blahg() {
     console.dir(result);
     updateUrl(result?.info?.secure_url);
     console.dir(url);
-    setBlahg({
+    setFranky({
       title: '',
       author: '',
       category: '',
@@ -190,7 +184,7 @@ export default function Blahg() {
           <br></br>
           <input
             type='text'
-            value={blahg.title}
+            value={franky.title}
             onChange={handleChange}
             name="title"
             placeholder='Title'
@@ -198,14 +192,14 @@ export default function Blahg() {
           </input>
           <br />
           <input
-            value={blahg.author}
+            value={franky.author}
             onChange={handleChange}
             name="author"
             placeholder='Author'>
           </input>
           <br />
           <input
-            value={blahg.text}
+            value={franky.text}
             onChange={handleChange}
             name="text"
             rows={2}
@@ -213,7 +207,7 @@ export default function Blahg() {
           </input>
           <br />
           <select
-            value={blahg.category}
+            value={franky.category}
             onChange={handleChange}
             name="category">
             <option value="🤍 Frankly Franky">Select a 🤍</option>
@@ -226,23 +220,23 @@ export default function Blahg() {
           </select>
           <br />
           <br />
-          <button onClick={() => createBlahg()}>Display your Entry</button>
+          <button onClick={() => createFranky()}>Display your Entry</button>
         </div>
       </section>
       <hr></hr>
-      {blahgs && blahgs.length ? (
+      {frankys && frankys.length ? (
         <Container className='collumns'>
-          {blahgs.map((blahg) => {
+          {frankys.map((franky) => {
             return (
-              <MDBCard key={blahg._id} className="w-75 p-3">
+              <MDBCard key={franky._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
-                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={blahg.image} alt='...' fluid />
+                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={franky.image} alt='...' fluid />
                   </MDBCol>
                   <MDBCol md='8'>
                     <MDBCardBody>
-                      <MDBCardTitle>{blahg.title}</MDBCardTitle>
-                      <MDBCardText onClick={() => setShowInput(!showInput)}>{blahg.text}
+                      <MDBCardTitle>{franky.title}</MDBCardTitle>
+                      <MDBCardText onClick={() => setShowInput(!showInput)}>{franky.text}
                         <input
                           ref={inputRef}
                           style={{ display: showInput ? 'block' : 'none' }}
@@ -251,19 +245,19 @@ export default function Blahg() {
                             if (e.key === 'Enter') {
                               e.preventDefault()
                               // const text = inputRef.current.value
-                              updateBlahg(blahg._id, { text: e.target.value })
+                              updateFranky(franky._id, { text: e.target.value })
                               setShowInput(false)
                             }
                           }}
-                          defaultValue={blahg.text}
+                          defaultValue={franky.text}
                         />
                       </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>
-                          {blahg.author} posted on {new Date(blahg.createdAt).toLocaleDateString()}
+                          {franky.author} posted on {new Date(franky.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeBlahg(blahg._id)}> {blahg.like} {blahg.category}</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeFranky(franky._id)}> {franky.like} {franky.category}</button>
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
-import UploadWidget from './UploadWidget';
+import UploadWidget from '../Image/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
 
@@ -14,9 +14,9 @@ import {
   MDBCardImage,
   MDBRow,
   MDBCol,
-  MDBIcon``
+  MDBIcon
 } from 'mdb-react-ui-kit';
-``
+
 export default function Vibe() {
   const [foundVibes, setFoundVibes] = useState(null)
   const [vibes, setVibes] = useState([])
@@ -58,7 +58,6 @@ export default function Vibe() {
       setFoundVibes(data)
       setVibe({
         title: '',
-        createdDate: '',
         author: '',
         category: '',
         text: '',
@@ -80,10 +79,6 @@ export default function Vibe() {
         }
       })
       const data = await response.json()
-      // const vibesCopy = [...vibes]
-      // const index = vibesCopy.findIndex(vibe => id === vibe._id)
-      // vibesCopy.splice(index, 1)
-      // setVibes(vibesCopy)
       setFoundVibes(data)
     } catch (error) {
       console.error(error)
@@ -157,9 +152,7 @@ export default function Vibe() {
       like: 0
     })
 }
-
-
-  return (
+return (
     <>
 
       <section>
@@ -179,15 +172,13 @@ export default function Vibe() {
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-           
-              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
+           <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
                 <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
               </div>
             )}
           </span>
-
-          <br></br>
+<br></br>
           <input
             type='text'
             value={vibe.title}
@@ -273,7 +264,7 @@ export default function Vibe() {
           }
           )
           }
-        </Container>) : <>No Entries yet! Yet Add One Below this message</>
+        </Container>) : <>Let's Create Some Vibes</>
       }
     </>
 

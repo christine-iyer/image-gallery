@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose')
 
 const vibeSchema = new Schema({
+     title: String,
      author: String, 
-     title: String, 
      category: String, 
      text: String, 
      image: String, 

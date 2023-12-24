@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
-import UploadWidget from './UploadWidget';
+import UploadWidget from '../Image/UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import setClass from './../../utilities/category-class'
-// import '../App.css'
-import styles from './Saylor.module.scss'
-import image from '../../../models/lolo';
+import setClass from '../../utilities/category-class'
+import styles from '../Lolo/Lolo.module.scss'
+
+
 
 
 export default function Saylor() {
@@ -214,7 +214,7 @@ export default function Saylor() {
                 return (
                   <>
                     <div style={{ "display": "flex", "flexWrap": "wrap" }}>
-                      <div key={saylor.id} className={setClass(image, styles)} >
+                      <div key={saylor.id} className={setClass(saylor, styles)} >
                         <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={saylor.link} alt={saylor.alt} />
                      
                       <p onClick={() => setShowInput(!showInput)}>{saylor.alt}. Posted on {new Date(saylor.createdAt).toLocaleDateString()}.

@@ -11,12 +11,12 @@ export default function Bar(props) {
       <Container>
     <Nav >
     🧚🏿‍♀️🧚🏻 &nbsp;
-      <Link to="/">
-        <h1>Franky</h1>
+      <Link to="/lolos">
+        <h1>Lolo</h1>
       </Link>
       &nbsp; 🦗 &nbsp;
-      <Link to="/images">
-        <h1>Lolo</h1>
+      <Link to="/frankys">
+        <h1>Franky</h1>
       </Link>
      &nbsp;  🦄🦄 &nbsp;
       <Link to="/saylors">
