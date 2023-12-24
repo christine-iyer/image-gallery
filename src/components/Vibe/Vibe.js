@@ -14,9 +14,9 @@ import {
   MDBCardImage,
   MDBRow,
   MDBCol,
-  MDBIcon
+  MDBIcon``
 } from 'mdb-react-ui-kit';
-
+``
 export default function Vibe() {
   const [foundVibes, setFoundVibes] = useState(null)
   const [vibes, setVibes] = useState([])

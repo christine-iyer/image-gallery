@@ -1,11 +1,11 @@
 import './App.css';
-import Image from './components/Image/Image'
+import Lolo from './components/Lolo/Lolo'
 
 
 function App() {
   return (
     <div className="App">
-     <Image />
+     <Lolo />
     </div>
   );
 }

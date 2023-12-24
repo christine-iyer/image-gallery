@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const imageSchema = new Schema({
+const loloSchema = new Schema({
      link: String, 
      alt: String, 
      category: String, 
@@ -11,4 +11,4 @@ const imageSchema = new Schema({
 timestamps: true
 })
 
-module.exports = model('Image', imageSchema)
+module.exports = model('Lolo', loloSchema)

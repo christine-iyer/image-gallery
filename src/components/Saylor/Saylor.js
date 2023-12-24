@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import setClass from './../../utilities/category-class'
 // import '../App.css'
 import styles from './Saylor.module.scss'
-import image from '../../../models/image';
+import image from '../../../models/lolo';
 
 
 export default function Saylor() {

@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
-import UploadWidget from './UploadWidget';
+import UploadWidget from '../Image/UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import setClass from './../../utilities/category-class'
+import setClass from '../../utilities/category-class'
 // import '../App.css'
-import styles from './Image.module.scss'
+import styles from './Lolo.module.scss'
 
 
-export default function Image() {
-  const [foundImages, setFoundImages] = useState(null)
-  const [images, setImages] = useState([])
-  const [image, setImage] = useState({
+export default function Lolo() {
+  const [foundLolos, setFoundLolos] = useState(null)
+  const [lolos, setLolos] = useState([])
+  const [lolo, setLolo] = useState({
     link: '',
     alt: '',
     category: '',
@@ -22,34 +22,34 @@ export default function Image() {
   
   const inputRef = useRef(null)
   const handleChange = (evt) => {
-    setImage({ ...image, [evt.target.name]: evt.target.value })
+    setLolo({ ...lolo, [evt.target.name]: evt.target.value })
   }
 
 
 
-  const getImages = async () => {
+  const getLolos = async () => {
     try {
-      const response = await fetch('/api/images')
+      const response = await fetch('/api/lolos')
       const data = await response.json()
-      setImages(data)
+      setLolos(data)
       console.log(data)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const createImage = async () => {
+  const createLolo = async () => {
     try {
-      const response = await fetch('/api/images', {
+      const response = await fetch('/api/lolos', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...image })
+        body: JSON.stringify({ ...lolo })
       })
       const data = await response.json()
-      setFoundImages(data)
-      setImage({
+      setFoundLolos(data)
+      setLolo({
         link: '',
         alt: '',
         category: '',
@@ -61,27 +61,27 @@ export default function Image() {
     }
   }
 
-  const deleteImage = async (id) => {
+  const deleteLolo = async (id) => {
     try {
-      const response = await fetch(`/api/images/${id}`, {
+      const response = await fetch(`/api/lolos/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         }
       })
       const data = await response.json()
-      // const imagesCopy = [...images]
-      // const index = imagesCopy.findIndex(image => id === image._id)
-      // imagesCopy.splice(index, 1)
-      // setImages(imagesCopy)
-      setFoundImages(data)
+      // const lolosCopy = [...lolos]
+      // const index = lolosCopy.findIndex(lolo => id === lolo._id)
+      // lolosCopy.splice(index, 1)
+      // setLolos(lolosCopy)
+      setFoundLolos(data)
     } catch (error) {
       console.error(error)
     }
   }
-  const updateImage = async (id, updatedData) => {
+  const updateLolo = async (id, updatedData) => {
     try {
-      const response = await fetch(`/api/images/${id}`, {
+      const response = await fetch(`/api/lolos/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -89,35 +89,35 @@ export default function Image() {
         body: JSON.stringify(updatedData)
       })
       const data = await response.json()
-      setFoundImages(data)
-      const imagesCopy = [...images]
-      const index = imagesCopy.findIndex(image => id === image._id)
-      imagesCopy[index] = { ...imagesCopy[index], ...updatedData }
-      setImages(imagesCopy)
+      setFoundLolos(data)
+      const lolosCopy = [...lolos]
+      const index = lolosCopy.findIndex(lolo => id === lolo._id)
+      lolosCopy[index] = { ...lolosCopy[index], ...updatedData }
+      setLolos(lolosCopy)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const likeImage = async (id) => {
+  const likeLolo = async (id) => {
     try {
-      const index = images.findIndex((image) => image._id === id)
-      const imagesCopy = [...images]
-      const subject = imagesCopy[index]
+      const index = lolos.findIndex((lolo) => lolo._id === id)
+      const lolosCopy = [...lolos]
+      const subject = lolosCopy[index]
       subject.likes = subject.likes + 1
-      const response = await fetch(`/api/images/${id}`, {
+      const response = await fetch(`/api/lolos/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(subject)
       })
-      const updatedImage = await response.json()
-      const completedImagesCopy = [updatedImage, ...images]
+      const updatedLolo = await response.json()
+      const completedLolosCopy = [updatedLolo, ...lolos]
 
-      setImages(completedImagesCopy)
-      // imagesCopy.splice(index, 1)
-      setImages(imagesCopy)
+      setLolos(completedLolosCopy)
+      // lolosCopy.splice(index, 1)
+      setLolos(lolosCopy)
 
     } catch (error) {
       console.error(error)
@@ -125,8 +125,8 @@ export default function Image() {
   }
 
   useEffect(() => {
-    getImages()
-  }, [foundImages])
+    getLolos()
+  }, [foundLolos])
 
   function handleOnUpload(error, result, widget) {
     if (error) {
@@ -139,7 +139,7 @@ export default function Image() {
     console.dir(result);
     updateUrl(result?.info?.secure_url);
     console.dir(url);
-    setImage({
+    setLolo({
       link: result?.info?.secure_url,
       alt: '',
       likes: 0
@@ -176,14 +176,14 @@ export default function Image() {
               {error && <p>{error}</p>}
               {url && (
                 <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px' }}>
-                  <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
+                  <img variant="top" src={url} alt='uploaded lolo' id="uploadedlolo" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 </div>
               )}
             </span>
 
             <select
-              options={image.category}
-              value={image.category}
+              options={lolo.category}
+              value={lolo.category}
               onChange={handleChange}
               defaultValue={"placeholder"}
               name="category"
@@ -197,26 +197,26 @@ export default function Image() {
             </select>
 
             <input
-              value={image.alt}
+              value={lolo.alt}
               onChange={handleChange}
               name="alt"
               placeholder='Caption:'>
             </input>
-            <button onClick={() => createImage()}>Add to Gallery</button>
+            <button onClick={() => createLolo()}>Add to Gallery</button>
           </div>
         </div>
         <hr></hr>
         <div style={{display:"grid"}}>
-          {images && images.length ? (
+          {lolos && lolos.length ? (
             <div className='collumns'>
-              {images.map((image) => {
+              {lolos.map((lolo) => {
                 return (
                   <>
                     <div style={{ "display": "flex", "flexWrap": "wrap" }}>
-                      <div key={image.id} className={setClass(image, styles)} >
-                        <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={image.link} alt={image.alt} />
+                      <div key={lolo.id} className={setClass(lolo, styles)} >
+                        <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={lolo.link} alt={lolo.alt} />
                      
-                      <p onClick={() => setShowInput(!showInput)}>{image.alt}. Posted on {new Date(image.createdAt).toLocaleDateString()}.
+                      <p onClick={() => setShowInput(!showInput)}>{lolo.alt}. Posted on {new Date(lolo.createdAt).toLocaleDateString()}.
 
                         <input
                           ref={inputRef}
@@ -226,15 +226,15 @@ export default function Image() {
                             if (e.key === 'Enter') {
                               e.preventDefault()
                               //const alt = inputRef.current.value
-                              updateImage(image._id, { alt: e.target.value })
+                              updateLolo(lolo._id, { alt: e.target.value })
                               setShowInput(false)
                             }
                           }}
-                          defaultValue={image.alt}
+                          defaultValue={lolo.alt}
                         />
                       </p>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeImage(image._id)}> {image.likes}💜</button>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteImage(image._id)}>🗑️</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeLolo(lolo._id)}> {lolo.likes}💜</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteLolo(lolo._id)}>🗑️</button>
                     </div>
                      </div>
                   </>
