@@ -15,7 +15,7 @@ function App() {
         <BrowserRouter>
           <Bar />
           <Routes>
-            <Route path="/" element={<Franky />}/>
+            <Route path="/frankys" element={<Franky />}/>
             <Route path="/lolos" element={<Lolo />} />
             <Route path="/saylors" element={<Saylor />} />
             <Route path="/vibes" element={<Vibe />} />
