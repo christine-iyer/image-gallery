@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import setClass from '../../utilities/category-class'
-// import '../App.css'
+import '../../App.css'
 import styles from './Lolo.module.scss'
 
 
@@ -142,6 +142,7 @@ export default function Lolo() {
     setLolo({
       link: result?.info?.secure_url,
       alt: '',
+      category: '',
       likes: 0
     })
     
@@ -152,8 +153,7 @@ export default function Lolo() {
         <h1>Lorelei's Art</h1>
         <div className='uploadForm'>
           <div>
-          
-            <span>
+          <span>
               <UploadWidget onUpload={handleOnUpload}>
                 {({ open }) => {
                   function handleOnClick(e) {
@@ -176,7 +176,7 @@ export default function Lolo() {
               {error && <p>{error}</p>}
               {url && (
                 <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px' }}>
-                  <img variant="top" src={url} alt='uploaded lolo' id="uploadedlolo" style={{ 'width': 90, "borderRadius": "5%" }}></img>
+                  <img variant="top" src={url} alt='uploaded lolo' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 </div>
               )}
             </span>
