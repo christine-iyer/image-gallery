@@ -1,8 +1,11 @@
 .nav {
      text-decoration: double;
-     color: var(--blue-1);
-     font-size: 33px;
+     color: blueviolet;
+     // font-size: 33px;
      * {
           color: var(--blue-2);
      }
+}
+Bar {
+     color: white;
 }

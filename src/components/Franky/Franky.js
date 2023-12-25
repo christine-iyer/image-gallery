@@ -173,8 +173,7 @@ const deleteFranky = async (id) => {
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-           
-              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
+           <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
                 <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
               </div>

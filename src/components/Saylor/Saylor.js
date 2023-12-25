@@ -71,10 +71,6 @@ export default function Saylor() {
         }
       })
       const data = await response.json()
-      // const saylorsCopy = [...saylors]
-      // const index = saylorsCopy.findIndex(saylor => id === saylor._id)
-      // saylorsCopy.splice(index, 1)
-      // setSaylors(saylorsCopy)
       setFoundSaylors(data)
     } catch (error) {
       console.error(error)
@@ -117,7 +113,6 @@ export default function Saylor() {
       const completedSaylorsCopy = [updatedSaylor, ...saylors]
 
       setSaylors(completedSaylorsCopy)
-      // saylorsCopy.splice(index, 1)
       setSaylors(saylorsCopy)
 
     } catch (error) {
@@ -143,6 +138,7 @@ export default function Saylor() {
     setSaylor({
       link: result?.info?.secure_url,
       alt: '',
+      category: '',
       likes: 0
     })
     
@@ -190,11 +186,11 @@ export default function Saylor() {
               name="category"
             >
               <option className= 'optionOne' value={"placeholder"}>Choose Tag</option>
-              <option value="Paintings">Paintings</option>
-              <option value="Songs">Songs</option>
-              <option value="Animals">Animals</option>
-              <option value="School">School</option>
-              <option value="Dance">Dance</option>
+              <option value="Paint">Paint</option>
+              <option value="Markers">Markers</option>
+              <option value="Crayons">Crayons</option>
+              <option value="Mixed">Mixed</option>
+              <option value="Schoolwork">Schoolwork</option>
             </select>
 
             <input

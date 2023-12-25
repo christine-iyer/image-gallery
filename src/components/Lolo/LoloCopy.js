@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
-import UploadWidget from '../Image/UploadWidget';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import setClass from '../../utilities/category-class'
+import UploadWidget from './UploadWidget';
+
+import setClass from '../utilities/category-class'
 // import '../App.css'
 import styles from './Lolo.module.scss'
-
+import moment from 'moment'
 
 export default function Lolo() {
   const [foundLolos, setFoundLolos] = useState(null)
@@ -19,13 +19,15 @@ export default function Lolo() {
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
-  
   const inputRef = useRef(null)
   const handleChange = (evt) => {
     setLolo({ ...lolo, [evt.target.name]: evt.target.value })
   }
 
-
+  const formatDate = (dateString) => {
+    const options = { year: "numeric", month: "long", day: "numeric"}
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
 
   const getLolos = async () => {
     try {
@@ -55,7 +57,6 @@ export default function Lolo() {
         category: '',
         likes: 0
       })
-   
     } catch (error) {
       console.error(error)
     }
@@ -70,6 +71,10 @@ export default function Lolo() {
         }
       })
       const data = await response.json()
+      // const lolosCopy = [...lolos]
+      // const index = lolosCopy.findIndex(lolo => id === lolo._id)
+      // lolosCopy.splice(index, 1)
+      // setLolos(lolosCopy)
       setFoundLolos(data)
     } catch (error) {
       console.error(error)
@@ -112,6 +117,7 @@ export default function Lolo() {
       const completedLolosCopy = [updatedLolo, ...lolos]
 
       setLolos(completedLolosCopy)
+      // lolosCopy.splice(index, 1)
       setLolos(lolosCopy)
 
     } catch (error) {
@@ -137,11 +143,9 @@ export default function Lolo() {
     setLolo({
       link: result?.info?.secure_url,
       alt: '',
-      category:'',
-      likes: 0, 
-      
+      category: '',
+      likes: 0
     })
-    
   }
   return (
     <>
@@ -149,7 +153,6 @@ export default function Lolo() {
         <h1>Lorelei's Art</h1>
         <div className='uploadForm'>
           <div>
-          
             <span>
               <UploadWidget onUpload={handleOnUpload}>
                 {({ open }) => {
@@ -173,7 +176,7 @@ export default function Lolo() {
               {error && <p>{error}</p>}
               {url && (
                 <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px' }}>
-                  <img variant="top" src={url} alt='uploaded lolo' id="uploadedlolo" style={{ 'width': 90, "borderRadius": "5%" }}></img>
+                  <img variant="top" src={url} alt='uploaded lolo' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 </div>
               )}
             </span>
