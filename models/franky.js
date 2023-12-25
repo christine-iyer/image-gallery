@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const blahgSchema = new Schema({
+const frankySchema = new Schema({
      author: String, 
      title: String, 
      category: String, 
@@ -9,4 +9,4 @@ const blahgSchema = new Schema({
      like: Number
 }, {timestamps: true
 })
-module.exports = model("Blahg", blahgSchema)
+module.exports = model("Franky", frankySchema)
