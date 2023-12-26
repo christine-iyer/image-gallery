@@ -1,6 +1,6 @@
 .schoolwork {
      border: 10px solid transparent;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1699738460/co7m25hmtugvn3nsfvqg.png) 30 round;
+     border-image: url('./cackground.png') 30 round;
      border-radius: 5%;
 }
 .optionOne{
@@ -8,25 +8,25 @@
 }
 .markers {
      border: 10px solid transparent;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701957302/or8z9nmoy7pn0cdzugrd.png) 30 round;
+     border-image: url('./bg5.png') 100 round;
      border-radius: 5%;
 }
 
 .paint {
      border-radius: 5%;
      border: 10px solid transparent;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/od5v1uvqoiif9d08zgpd.png) 30 round;
+     border-image: url('./bg4.png') 100 round;
 }
 
 .crayons {
      border-radius: 5%;
      border: 10px solid transparent;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701985826/c79raip3gzo23whfiris.png) 30 round;
+     border-image: url('./bg3.png') 100 round;
 }
 
 .mixed {
      border: 10px solid transparent;
-     border-image: url(https://res.cloudinary.com/dqjhgnivi/image/upload/v1701638744/n0jdn1gtcoorkmcufepl.png) 30 round;
+     border-image: url('./bg2.png') 100 round;
      border-radius: 5%;
 }
 
@@ -46,4 +46,7 @@
      list-style: none;
      border: none;
 
+}
+.background {
+     background-color: aliceblue;
 }

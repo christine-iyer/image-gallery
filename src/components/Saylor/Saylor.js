@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import setClass from '../../utilities/category-class'
-import styles from '../Lolo/Lolo.module.scss'
+import styles from './Saylor.module.scss'
 
 
 
@@ -144,7 +144,7 @@ export default function Saylor() {
     
   }
   return (
-    <>
+    <div className={styles.background}>
       <div className='canvas'>
         <h1>Saylors's Blog</h1>
         <div className='uploadForm'>
@@ -244,6 +244,6 @@ export default function Saylor() {
           }
         </div>
       </div>
-    </>
+    </div>
   )
 }
