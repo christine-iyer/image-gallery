@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-
+import styles from './Franky.module.scss'
 import '../../App.css';
 
 import {
@@ -69,7 +69,7 @@ export default function Franky() {
     }
   }
 
-const deleteFranky = async (id) => {
+  const deleteFranky = async (id) => {
     try {
       const response = await fetch(`/api/frankys/${id}`, {
         method: 'DELETE',
@@ -150,7 +150,7 @@ const deleteFranky = async (id) => {
       image: result?.info?.secure_url,
       like: 0
     })
-}
+  }
 
 
   return (
@@ -167,13 +167,13 @@ const deleteFranky = async (id) => {
                   open();
                 }
                 return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
+                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)', 'marginBottom': "9px" }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
                 )
               }}
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-           <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
+              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
                 <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
               </div>
@@ -223,50 +223,58 @@ const deleteFranky = async (id) => {
         </div>
       </section>
       <hr></hr>
-      {frankys && frankys.length ? (
-        <Container className='collumns'>
-          {frankys.map((franky) => {
-            return (
-              <MDBCard key={franky._id} className="w-75 p-3">
-                <MDBRow className='g-0'>
-                  <MDBCol md='4'>
-                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={franky.image} alt='...' fluid />
-                  </MDBCol>
-                  <MDBCol md='8'>
-                    <MDBCardBody>
-                      <MDBCardTitle>{franky.title}</MDBCardTitle>
-                      <MDBCardText onClick={() => setShowInput(!showInput)}>{franky.text}
-                        <input
-                          ref={inputRef}
-                          style={{ display: showInput ? 'block' : 'none' }}
-                          type='text'
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault()
-                              // const text = inputRef.current.value
-                              updateFranky(franky._id, { text: e.target.value })
-                              setShowInput(false)
-                            }
-                          }}
-                          defaultValue={franky.text}
-                        />
-                      </MDBCardText>
-                      <MDBCardText>
-                        <small className='text-muted'>
-                          {franky.author} posted on {new Date(franky.createdAt).toLocaleDateString()}
-                        </small>
-                      </MDBCardText>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeFranky(franky._id)}> {franky.like} {franky.category}</button>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
+      {frankys && frankys.length ?
+        (
+          <div className='collumns'>
+            {frankys.map((franky) => {
+              return (
+                <div key={franky._id} className="content">
 
+<figure class="figure">
+					{/* <img class="media" src={franky.image}  alt=""></img> */}
+					<figcaption class="figcaption">{franky.text}</figcaption>
+				</figure>
+
+
+                      <img className="media" src={franky.image} alt={franky.category} fluid />
+
+
+                      <MDBCardBody>
+                        <MDBCardTitle>{franky.title}</MDBCardTitle>
+                        <MDBCardText onClick={() => setShowInput(!showInput)}>{franky.text}
+                          <input
+                            ref={inputRef}
+                            style={{ display: showInput ? 'block' : 'none' }}
+                            type='text'
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                e.preventDefault()
+                                // const text = inputRef.current.value
+                                updateFranky(franky._id, { text: e.target.value })
+                                setShowInput(false)
+                              }
+                            }}
+                            defaultValue={franky.text}
+                          />
+                        </MDBCardText>
+                        <MDBCardText>
+                          <small className={styles.textMuted}>
+                            {franky.author} posted on {new Date(franky.createdAt).toLocaleDateString()}
+                          </small>
+                        </MDBCardText>
+                        <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeFranky(franky._id)}> {franky.like} {franky.category}</button>
+                      </MDBCardBody>
+
+                </div>
+
+              )
+            }
             )
-          }
-          )
-          }
-        </Container>) : <>No Entries yet! Yet Add One Below this message</>
+            }
+          </div>
+          
+          
+          ) : <>No Entries yet! Yet Add One Below this message</>
       }
     </>
 
