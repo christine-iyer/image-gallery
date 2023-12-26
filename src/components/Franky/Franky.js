@@ -1,40 +1,37 @@
 import { useState, useEffect, useRef } from 'react'
 import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
-import { Container } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import {Container, Row, Col} from 'react-bootstrap';
+import './style.css'
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-import styles from './Franky.module.scss'
-import '../../App.css';
-
-import {
-  MDBCard,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBRow,
-  MDBCol,
-  MDBIcon
-} from 'mdb-react-ui-kit';
+const paragraphStyles = {
+  WebKitLineClamp:1, 
+  WebKitBoxOrient: 'horizontal', 
+  overflow: 'hidden', 
+  display: '-webkit-box'
+}
 
 export default function Franky() {
-  const [foundFrankys, setFoundFrankys] = useState(null)
   const [frankys, setFrankys] = useState([])
+  const [foundFranky, setFoundFranky] = useState(null)
   const [franky, setFranky] = useState({
     title: '',
     author: '',
     category: '',
     text: '',
-    image: '',
-    like: 0
+    image: ''
   })
-  const [showInput, setShowInput] = useState(false)
-  const [url, updateUrl] = useState(false);
-  const [error, updateError] = useState();
-  const inputRef = useRef(null)
+  const [isOpen, setIsOpen]= useState(false)
+  const [showReadMoreButton, setShowReadMoreButton]= useState(false)
+  const ref = useRef(null)
+
   const handleChange = (evt) => {
     setFranky({ ...franky, [evt.target.name]: evt.target.value })
   }
+
+
+  // index
   const getFrankys = async () => {
     try {
       const response = await fetch('/api/frankys')
@@ -44,56 +41,32 @@ export default function Franky() {
       console.error(error)
     }
   }
-
-  const createFranky = async () => {
-    try {
-      const response = await fetch('/api/frankys', {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ ...franky })
-      })
-      const data = await response.json()
-      setFoundFrankys(data)
-      setFranky({
-        title: '',
-        author: '',
-        category: '',
-        text: '',
-        image: '',
-        like: 0
-      })
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
+  // delete
   const deleteFranky = async (id) => {
     try {
       const response = await fetch(`/api/frankys/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         }
       })
       const data = await response.json()
-      setFoundFrankys(data)
+      setFoundFranky(data)
     } catch (error) {
       console.error(error)
     }
   }
+  // update
   const updateFranky = async (id, updatedData) => {
     try {
       const response = await fetch(`/api/frankys/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedData)
+        body: JSON.stringify({ ...updatedData })
       })
       const data = await response.json()
-      setFoundFrankys(data)
       const frankysCopy = [...frankys]
       const index = frankysCopy.findIndex(franky => id === franky._id)
       frankysCopy[index] = { ...frankysCopy[index], ...updatedData }
@@ -102,35 +75,49 @@ export default function Franky() {
       console.error(error)
     }
   }
-
-  const likeFranky = async (id) => {
+  // create
+  const createFranky = async () => {
     try {
-      const index = frankys.findIndex((franky) => franky._id === id)
-      const frankysCopy = [...frankys]
-      const subject = frankysCopy[index]
-      subject.like = subject.like + 1
-      const response = await fetch(`/api/frankys/${id}`, {
-        method: 'PUT',
+      const response = await fetch(`/api/frankys`, {
+        method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(subject)
+        body: JSON.stringify({ ...franky })
       })
-      const updatedFranky = await response.json()
-      const completedFrankysCopy = [updatedFranky, ...frankys]
-
-      setFrankys(completedFrankysCopy)
-      // frankysCopy.splice(index, 1)
-      setFrankys(frankysCopy)
-
+      const data = await response.json()
+      setFoundFranky(data)
+      setFranky({
+        title: '',
+        createdDate: '',
+        author: '',
+        category: '',
+        text: '',
+        image: ''
+      })
     } catch (error) {
       console.error(error)
     }
   }
+
+
   useEffect(() => {
     getFrankys()
-  }, [foundFrankys])
+  }, [foundFranky])
 
+  useEffect(()=> {
+    if(ref.current) {
+      console.log(ref.current.scrollHeight,ref.current.clientHeight)
+
+      setShowReadMoreButton(
+        ref.current.scrollHeight !== ref.current.clientHeight
+      )
+    }
+  },[])
+
+
+  const [url, updateUrl] = useState(false);
+  const [error, updateError] = useState();
   function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
@@ -147,131 +134,133 @@ export default function Franky() {
       author: '',
       category: '',
       text: '',
-      image: result?.info?.secure_url,
-      like: 0
+      image: result?.info?.secure_url
+
     })
   }
 
-
   return (
     <>
+    <section>
+    <h1>CREATE A NEW BLOG</h1>
+      <UploadWidget onUpload={handleOnUpload}>
+        {({ open }) => {
+          function handleOnClick(e) {
+            e.preventDefault();
+            open();
+          }
+          return (
+            <button onClick={handleOnClick}>
+              Upload an Image
+            </button>
+          )
+        }}
+      </UploadWidget>
 
-      <section>
-        <h1>Post Shamelessly</h1>
-        <div>
-          <span>
-            <UploadWidget onUpload={handleOnUpload}>
-              {({ open }) => {
-                function handleOnClick(e) {
-                  e.preventDefault();
-                  open();
-                }
-                return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)', 'marginBottom': "9px" }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
-                )
-              }}
-            </UploadWidget>
-            {error && <p>{error}</p>}
-            {url && (
-              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
-                <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
-                {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
-              </div>
-            )}
-          </span>
+      {error && <p>{error}</p>}
 
-          <br></br>
-          <input
-            type='text'
-            value={franky.title}
-            onChange={handleChange}
-            name="title"
-            placeholder='Title'
-          >
-          </input>
-          <br />
-          <input
-            value={franky.author}
-            onChange={handleChange}
-            name="author"
-            placeholder='Author'>
-          </input>
-          <br />
-          <input
-            value={franky.text}
-            onChange={handleChange}
-            name="text"
-            rows={2}
-            placeholder='Some meaningful text'>
-          </input>
-          <br />
-          <select
-            value={franky.category}
-            onChange={handleChange}
-            name="category">
-            <option value="🤍 Frankly Franky">Select a 🤍</option>
-            <option value="💛 Janky Franky">💛 Janky Franky</option>
-            <option value="🧡 Franky Panky">🧡 Franky Panky</option>
-            <option value="💚 Cranky Franky">💚 Cranky Franky</option>
-            <option value="💙 Franky 🌙">💙 Franky 🌙</option>
-            <option value="💜 Swanky Franky">💜 Swanky Franky</option>
-            <option value="❤️ C'est la vie, Franky!">❤️ C'est la vie, Franky!</option>
-          </select>
-          <br />
-          <br />
-          <button onClick={() => createFranky()}>Display your Entry</button>
+      {url && (
+        <div key={url._id} className='card' style={{ width: '8rem' }}>
+          <img variant="top" src={url} id="uploadedimage"></img>
+          <p className="url">{url}</p>
         </div>
-      </section>
-      <hr></hr>
-      {frankys && frankys.length ?
-        (
-          <div className='collumns'>
-            <div className='content'>
-              {frankys.map((franky) => {
-                return (
-                  <div key={franky._id} className="collumns">
-                    <div>
-                      <div className='head'>{franky.title}</div>
-                      <figure class="figure">
-                        <img className="media" src={franky.image} alt={franky.category} fluid />
-                        <figcaption class="figcaption">{franky.text}</figcaption>
-                      </figure>
-                      <p onClick={() => setShowInput(!showInput)}>{franky.text}
-                        <input
-                          ref={inputRef}
-                          style={{ display: showInput ? 'block' : 'none' }}
-                          type='text'
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault()
-                              // const text = inputRef.current.value
-                              updateFranky(franky._id, { text: e.target.value })
-                              setShowInput(false)
-                            }
-                          }}
-                          defaultValue={franky.text}
-                        />
-                      </p>
-                      <p>
-                        <small className={styles.textMuted}>
-                          {franky.author} posted on {new Date(franky.createdAt).toLocaleDateString()}
-                        </small>
-                      </p>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeFranky(franky._id)}> {franky.like} {franky.category}</button>
-                    </div>
+      )}
 
-                  </div>
+      {'New Franky Name'}
+      <input
+        value={franky.title}
+        onChange={handleChange}
+        name="title">
+      </input>
+      <br />
+      {'Author '}
+      <input
+        value={franky.author}
+        onChange={handleChange}
+        name="author">
+      </input>
+      <br />
+      {'Text '}
+      <input
+        value={franky.text}
+        onChange={handleChange}
+        name="text">
+      </input>
+      <br />
+      {'Category '}
+      <select
+        value={franky.category}
+        onChange={handleChange}
+        name="category">
+        <option value="Curiousities">Select One ...</option>
+        <option value="Curiousities">Curiousities</option>
+        <option value="Thoughts">Thoughts</option>
+        <option value="ToDos">ToDos</option>
+      </select>
+      <br />
+      {'Image '}
+      <input
+        value={url}
+        onChange={handleChange}
+        name="url">
+      </input>
+      <br />
 
-                )
-              }
-              )
-              }
+<button onClick={() => createFranky()}>READY TO SEE YOUR Franky</button>
+</section>
+
+      {
+
+        frankys && frankys.length ? (
+        <Container className='collumns'>
+           <Row>
+            <Col xs={4} md={6}>
+
+          
+          {
+            frankys.map((franky) => {
+              return (
+                <div className='collumn' key={franky._id}>
+                  
+                  <div className="head">
+              <span className="headline hl1">{franky.title}</span>
+              <span>{new Date(franky.createdAt).toLocaleDateString()}</span>
+              <p>
+                <span className="headline hl2">by {franky.author}</span>
+              </p>
+              <q>{franky.text.split('. ', 1)[0]}</q>
             </div>
-          </div>
+            <figure className="figure">
+              <img className="media" src={franky.image} alt="" />
+              <figcaption className="figcaption">{franky.category}</figcaption>
+            </figure>
+            <p style={isOpen ? null : paragraphStyles} ref = {ref}>{franky.text} <span className="citation"></span></p>
+            {showReadMoreButton && (
+              <button onClick={()=> setIsOpen(!isOpen)}>
+                {isOpen ? 'read less...' : 'read more ...'}
+              </button>
+            )}
+          
+            
+   </div>
 
-        ) : <>No Entries yet! Yet Add One Below this message</>
+
+                
+
+
+                
+              )
+            })
+          }
+          </Col>
+          </Row>
+
+        </Container>) : <>No Expenses Yet Add One Below</>
       }
-    </>
 
+
+
+
+    </>
   )
 }
