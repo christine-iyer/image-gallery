@@ -226,55 +226,50 @@ export default function Franky() {
       {frankys && frankys.length ?
         (
           <div className='collumns'>
-            {frankys.map((franky) => {
-              return (
-                <div key={franky._id} className="content">
+            <div className='content'>
+              {frankys.map((franky) => {
+                return (
+                  <div key={franky._id} className="collumns">
+                    <div>
+                      <div className='head'>{franky.title}</div>
+                      <figure class="figure">
+                        <img className="media" src={franky.image} alt={franky.category} fluid />
+                        <figcaption class="figcaption">{franky.text}</figcaption>
+                      </figure>
+                      <p onClick={() => setShowInput(!showInput)}>{franky.text}
+                        <input
+                          ref={inputRef}
+                          style={{ display: showInput ? 'block' : 'none' }}
+                          type='text'
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                              // const text = inputRef.current.value
+                              updateFranky(franky._id, { text: e.target.value })
+                              setShowInput(false)
+                            }
+                          }}
+                          defaultValue={franky.text}
+                        />
+                      </p>
+                      <p>
+                        <small className={styles.textMuted}>
+                          {franky.author} posted on {new Date(franky.createdAt).toLocaleDateString()}
+                        </small>
+                      </p>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeFranky(franky._id)}> {franky.like} {franky.category}</button>
+                    </div>
 
-<figure class="figure">
-					{/* <img class="media" src={franky.image}  alt=""></img> */}
-					<figcaption class="figcaption">{franky.text}</figcaption>
-				</figure>
+                  </div>
 
-
-                      <img className="media" src={franky.image} alt={franky.category} fluid />
-
-
-                      <MDBCardBody>
-                        <MDBCardTitle>{franky.title}</MDBCardTitle>
-                        <MDBCardText onClick={() => setShowInput(!showInput)}>{franky.text}
-                          <input
-                            ref={inputRef}
-                            style={{ display: showInput ? 'block' : 'none' }}
-                            type='text'
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter') {
-                                e.preventDefault()
-                                // const text = inputRef.current.value
-                                updateFranky(franky._id, { text: e.target.value })
-                                setShowInput(false)
-                              }
-                            }}
-                            defaultValue={franky.text}
-                          />
-                        </MDBCardText>
-                        <MDBCardText>
-                          <small className={styles.textMuted}>
-                            {franky.author} posted on {new Date(franky.createdAt).toLocaleDateString()}
-                          </small>
-                        </MDBCardText>
-                        <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeFranky(franky._id)}> {franky.like} {franky.category}</button>
-                      </MDBCardBody>
-
-                </div>
-
+                )
+              }
               )
-            }
-            )
-            }
+              }
+            </div>
           </div>
-          
-          
-          ) : <>No Entries yet! Yet Add One Below this message</>
+
+        ) : <>No Entries yet! Yet Add One Below this message</>
       }
     </>
 
