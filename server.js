@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'build')))
 
 app.use('/api/lolos', require('./routes/api/lolos'))
 app.use('/api/saylors', require('./routes/api/saylors'))
-app.use('/api/frankys', require('./routes/api/frankys'))
+app.use('/api/frankys', require('./routes/api/times'))
 app.use('/api/vibes', require('./routes/api/vibes'))
 
 app.get('*', (req, res) => {
