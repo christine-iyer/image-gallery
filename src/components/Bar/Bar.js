@@ -11,6 +11,10 @@ export default function Bar(props) {
     <Navbar  className="navbar-left" bg="light" variant="light" width='100%'>
       <Container >
     <Nav >
+    🏠🏠 &nbsp;
+      <Link to="/">
+        <h1>🏠</h1>
+      </Link>
     🧚🏿‍♀️🧚🏻 &nbsp;
       <Link to="/lolos">
         <h1>Lolo</h1>
