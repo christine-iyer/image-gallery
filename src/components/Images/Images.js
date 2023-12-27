@@ -7,18 +7,7 @@ import styles from './Images.module.scss'
 export default function Images(){
      return(
           <div>
-          <Link to="/lolos" target="_blank" rel="noreferrer">
-            <img src={Lolo} alt='lolo'></img>
-          </Link>
-          <Link to="/saylors" target="_blank" rel="noreferrer">
-            <img src={Saylor} alt='saylor'></img>
-          </Link>
-          <Link to="/times" target="_blank" rel="noreferrer">
-            <img src={Times} alt='times'></img>
-          </Link>
-          <Link to="/vibes" target="_blank" rel="noreferrer">
-            <img src={Vibes} alt='vibin'></img>
-          </Link>
+          <h1>Hello</h1>
         </div>
 
 
