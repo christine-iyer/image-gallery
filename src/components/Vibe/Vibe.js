@@ -18,9 +18,9 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Vibe() {
-  const [foundVibes, setFoundVibes] = useState(null)
-  const [vibes, setVibes] = useState([])
-  const [vibe, setVibe] = useState({
+const [vibes, setVibes] = useState([]) 
+const [foundVibes, setFoundVibes] = useState(null)
+const [vibe, setVibe] = useState({
     title: '',
     author: '',
     category: '',

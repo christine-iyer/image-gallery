@@ -1,8 +1,9 @@
 const { Schema, model } = require('mongoose')
 
 const timeSchema = new Schema({
-     author: String, 
+     
      title: String, 
+     author: String, 
      category: String, 
      text: String, 
      image: String, 
