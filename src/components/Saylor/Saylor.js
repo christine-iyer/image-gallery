@@ -4,7 +4,17 @@ import UploadWidget from '../Image/UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import setClass from '../../utilities/category-class'
 import styles from './Saylor.module.scss'
-
+import {
+  MDBCard,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBIcon
+} from 'mdb-react-ui-kit';
+import { Container } from 'react-bootstrap';
 
 
 
@@ -205,7 +215,7 @@ export default function Saylor() {
         <hr></hr>
         <div style={{display:"grid"}}>
           {saylors && saylors.length ? (
-            <div className='collumns'>
+            <Container className='collumns'>
               {saylors.map((saylor) => {
                 return (
                   <>
@@ -238,7 +248,7 @@ export default function Saylor() {
                 )
               }
               )}
-            </div>)
+            </Container>)
             :
             <> No Saylor entries yet! Yet Add One Below.</>
           }
