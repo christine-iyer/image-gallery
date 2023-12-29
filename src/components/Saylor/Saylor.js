@@ -156,7 +156,7 @@ export default function Saylor() {
   return (
     <div className={styles.background}>
       <div className='canvas'>
-        <h1>Saylors's Blog</h1>
+        <h1>The Saylor B🐝🐝 Blog</h1>
         <div className='uploadForm'>
           <div>
           
@@ -214,6 +214,8 @@ export default function Saylor() {
         </div>
         <hr></hr>
         <div style={{display:"grid"}}>
+          {saylors && saylors.length ? (
+            
         <Container className='collumns'>
           {saylors.map((saylor) => {
             return (
@@ -255,46 +257,7 @@ export default function Saylor() {
           }
           )
           }
-        </Container>
-          {/* {saylors && saylors.length ? (
-            <div className='collumns'>
-              {saylors.map((saylor) => {
-                return (
-                  <>
-                    <div style={{ "display": "flex", "flexWrap": "wrap" }}>
-                      <div key={saylor.id} className={setClass(saylor, styles)} >
-                        <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={saylor.link} alt={saylor.alt} />
-                     
-                      <p onClick={() => setShowInput(!showInput)}>{saylor.alt}. Posted on {new Date(saylor.createdAt).toLocaleDateString()}.
-
-                        <input
-                          ref={inputRef}
-                          style={{ display: showInput ? 'block' : 'none' }}
-                          type='text'
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              e.preventDefault()
-                              //const alt = inputRef.current.value
-                              updateSaylor(saylor._id, { alt: e.target.value })
-                              setShowInput(false)
-                            }
-                          }}
-                          defaultValue={saylor.alt}
-                        />
-                      </p>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeSaylor(saylor._id)}> {saylor.likes}💜</button>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteSaylor(saylor._id)}>🗑️</button>
-                    </div>
-                     </div>
-                  </>
-                )
-              }
-              )}
-            </div>
-            ) */
-            }
-            :
-            <> No Saylor entries yet! Yet Add One Below.</>
+        </Container>):<> No Saylor entries yet! Yet Add One Below.</>
           }
         </div>
       </div>
