@@ -3,6 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import setClass from '../../utilities/category-class'
+import { Container } from 'react-bootstrap';
 import styles from './Saylor.module.scss'
 import {
   MDBCard,
@@ -14,7 +15,6 @@ import {
   MDBCol,
   MDBIcon
 } from 'mdb-react-ui-kit';
-import { Container } from 'react-bootstrap';
 
 
 
@@ -214,8 +214,50 @@ export default function Saylor() {
         </div>
         <hr></hr>
         <div style={{display:"grid"}}>
-          {saylors && saylors.length ? (
-            <Container className='collumns'>
+        <Container className='collumns'>
+          {saylors.map((saylor) => {
+            return (
+              <MDBCard key={saylor._id} className="w-75 p-3">
+                <MDBRow className='g-0'>
+                  <MDBCol md='4'>
+                    <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={saylor.link} alt='...' fluid />
+                  </MDBCol>
+                  <MDBCol md='8'>
+                    <MDBCardBody>
+                      <MDBCardTitle>{saylor.title}</MDBCardTitle>
+                      <MDBCardText onClick={() => setShowInput(!showInput)}>{saylor.text}
+                        <input
+                          ref={inputRef}
+                          style={{ display: showInput ? 'block' : 'none' }}
+                          type='text'
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              e.preventDefault()
+                              // const text = inputRef.current.value
+                              updateSaylor(saylor._id, { text: e.target.value })
+                              setShowInput(false)
+                            }
+                          }}
+                          defaultValue={saylor.text}
+                        />
+                      </MDBCardText>
+                      <MDBCardText>
+                        <small className='text-muted'>
+                          {saylor.author} posted on {new Date(saylor.createdAt).toLocaleDateString()}
+                        </small>
+                      </MDBCardText>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeSaylor(saylor._id)}> ♥️{saylor.likes} {saylor.category}</button>
+                    </MDBCardBody>
+                  </MDBCol>
+                </MDBRow>
+              </MDBCard>
+            )
+          }
+          )
+          }
+        </Container>
+          {/* {saylors && saylors.length ? (
+            <div className='collumns'>
               {saylors.map((saylor) => {
                 return (
                   <>
@@ -248,7 +290,9 @@ export default function Saylor() {
                 )
               }
               )}
-            </Container>)
+            </div>
+            ) */
+            }
             :
             <> No Saylor entries yet! Yet Add One Below.</>
           }

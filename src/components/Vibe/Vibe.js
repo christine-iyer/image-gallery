@@ -18,9 +18,9 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function Vibe() {
-const [vibes, setVibes] = useState([]) 
-const [foundVibes, setFoundVibes] = useState(null)
-const [vibe, setVibe] = useState({
+  const [vibes, setVibes] = useState([])
+  const [foundVibes, setFoundVibes] = useState(null)
+  const [vibe, setVibe] = useState({
     title: '',
     author: '',
     category: '',
@@ -151,10 +151,9 @@ const [vibe, setVibe] = useState({
       image: result?.info?.secure_url,
       like: 0
     })
-}
-return (
+  }
+  return (
     <>
-
       <section>
         <h1>Post Shamelessly</h1>
         <div>
@@ -166,19 +165,19 @@ return (
                   open();
                 }
                 return (
-                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)' , 'marginBottom': "9px"}} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
+                  <button style={{ "backgroundColor": 'rgba(162, 134, 109, 0.5)', 'marginBottom': "9px" }} onClick={handleOnClick}><MDBIcon fab icon='instagram' size='xxl' /></button>
                 )
               }}
             </UploadWidget>
             {error && <p>{error}</p>}
             {url && (
-           <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
+              <div key={url._id} className='card' style={{ width: '8rem', 'marginBottom': '1px', 'backgroundColor': 'red' }}>
                 <img variant="top" src={url} alt='uploaded image' id="uploadedimage" style={{ 'width': 90, "borderRadius": "5%" }}></img>
                 {/* <p style={{ 'fontSize': '6px' }} className="url">{url}</p> */}
               </div>
             )}
           </span>
-<br></br>
+          <br></br>
           <input
             type='text'
             value={vibe.title}
@@ -259,7 +258,6 @@ return (
                   </MDBCol>
                 </MDBRow>
               </MDBCard>
-
             )
           }
           )
@@ -267,6 +265,5 @@ return (
         </Container>) : <>Let's Create Some Vibes</>
       }
     </>
-
   )
 }
