@@ -7,6 +7,7 @@ import setClass from '../../utilities/category-class'
 import styles from './Lolo.module.scss'
 
 
+
 export default function Lolo() {
   const [foundLolos, setFoundLolos] = useState(null)
   const [lolos, setLolos] = useState([])
@@ -203,12 +204,12 @@ export default function Lolo() {
           </div>
         </div>
         <hr></hr>
-        <div style={{display:"grid"}}>
+        <div  className={styles.blob} style={{display:"grid"}}>
           {lolos && lolos.length ? (
             <div className='collumns'>
               {lolos.map((lolo) => {
                 return (
-                  <>
+                  <div className={styles.canvas}>
                     <div style={{ "display": "flex", "flexWrap": "wrap" }}>
                       <div key={lolo.id} className={setClass(lolo, styles)} >
                         <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={lolo.link} alt={lolo.alt} />
@@ -234,7 +235,7 @@ export default function Lolo() {
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteLolo(lolo._id)}>🗑️</button>
                     </div>
                      </div>
-                  </>
+                  </div>
                 )
               }
               )}
