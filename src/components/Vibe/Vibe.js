@@ -3,7 +3,7 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-import ReadMore from './ReadMore';
+
 import '../../App.css';
 
 import {
@@ -28,8 +28,6 @@ export default function Vibe() {
     image: '',
     like: 0
   })
-  const [showMore, setShowMore]= useState(false)
-  const {text}= vibes.text
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -234,12 +232,6 @@ export default function Vibe() {
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{vibe.title}</MDBCardTitle>
-                      <h6>
-                        {showMore ? text : `${text.substring(0,20)}`}
-                        <button className='btn' onClick={()=> setShowMore(!showMore)}>
-                          {showMore ? "show Less": "show more"}
-                        </button>
-                      </h6>
                       <MDBCardText onClick={() => setShowInput(!showInput)}>{vibe.text}
                         <input
                           ref={inputRef}
