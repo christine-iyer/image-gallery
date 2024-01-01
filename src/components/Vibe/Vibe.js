@@ -28,7 +28,7 @@ export default function Vibe() {
     image: '',
     like: 0
   })
-  const [showMore, setShowMore]=useState(false);
+  const [readMore, setReadMore]=useState(false);
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -233,7 +233,11 @@ export default function Vibe() {
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{vibe.title}</MDBCardTitle>
-                      <MDBCardText onClick={() => setShowInput(!showInput)}>{vibe.text}
+
+                      <MDBCardText onClick={() => setShowInput(!showInput)}>{readMore ? vibe.text : `${vibe.text.substring(0,8)}...`}
+                      <button className="btn" onClick={() => setReadMore(!readMore)}>
+          {readMore ? "Oh God No. TMI!" : "  Enticed? Want to see more?"}
+        </button>
                         <input
                           ref={inputRef}
                           style={{ display: showInput ? 'block' : 'none' }}
@@ -250,7 +254,7 @@ export default function Vibe() {
                           defaultValue={vibe.text}
                         />
                       </MDBCardText>
-                      <button className='btn' onClick={()=> setShowMore(!showMore)}>ShowMore</button>
+                     
                       <MDBCardText>
                         <small className='text-muted'>
                           {vibe.author} posted on {new Date(vibe.createdAt).toLocaleDateString()}
