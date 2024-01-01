@@ -33,8 +33,9 @@ p{
   text-align: left;
 }
 .btn{
-  border: none;
-  background-color: white;
+  border:blueviolet;
+  border-style: double;
+  background-color: blue;
 }
 .imageContainer {
   border-color: peru;
