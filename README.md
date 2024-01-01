@@ -1,3 +1,5 @@
+[Link for easy read more button.](https://stackoverflow.com/questions/65801951/reactjs-how-to-maintain-index-for-multiple-readmore-readless-buttons-in-loop)
+
 Getting ready to deploy on a DO droplet. Printed instructions. I've not been coding as much as reviewing and putting off this process. But I've done it before...just because it wasn't easy, I did do it. And I'm sure it will actually be much easier because I have a clue about what I am doing. But PTSD hurts. Let's crush it tomorrow. Plus there's nothing I can't undo. 
 
 Looking at adding search params. By date and category. 
