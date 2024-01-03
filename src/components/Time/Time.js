@@ -134,7 +134,7 @@ export default function Time() {
   return (
     <>
       <section>
-        <h1>CREATE A NEW BLOG</h1>
+        <h1>New Entry</h1>
         <UploadWidget onUpload={handleOnUpload}>
           {({ open }) => {
             function handleOnClick(e) {

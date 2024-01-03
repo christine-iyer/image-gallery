@@ -185,6 +185,7 @@ export default function Vibe() {
             onChange={handleChange}
             name="title"
             placeholder='Title'
+            
           >
           </input>
           <br />
@@ -195,13 +196,15 @@ export default function Vibe() {
             placeholder='Author'>
           </input>
           <br />
-          <input
+          <textarea
             value={vibe.text}
             onChange={handleChange}
-            name="text"
-            rows={2}
+            // name="textarea"
+            rows={18}
+            cols={80}
+            style={{borderRadius:'5%', outline: 'dotted', color: 'pink'}}
             placeholder='Some meaningful text'>
-          </input>
+          </textarea>
           <br />
           <select
             value={vibe.category}
