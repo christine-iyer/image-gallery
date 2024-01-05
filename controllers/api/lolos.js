@@ -36,6 +36,7 @@ const deleteLolo = async (req, res, next) => {
          
          const lolos = await Lolo.find(req.body)
          res.locals.data.lolos = lolos 
+         lolos.reverse()
          next()
      } catch (error) {
          res.status(400).json({ msg: error.message })
