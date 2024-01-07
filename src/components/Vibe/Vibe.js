@@ -29,8 +29,7 @@ export default function Vibe() {
     like: 0
   })
 
-  const [readMore, setReadMore]=useState(false);
-
+  const [readMore, setReadMore] = useState(false);
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
@@ -87,6 +86,7 @@ export default function Vibe() {
       console.error(error)
     }
   }
+
   const updateVibe = async (id, updatedData) => {
     try {
       const response = await fetch(`/api/vibes/${id}`, {
@@ -187,7 +187,6 @@ export default function Vibe() {
             onChange={handleChange}
             name="title"
             placeholder='Title'
-            
           >
           </input>
           <br />
@@ -204,7 +203,7 @@ export default function Vibe() {
             // name="textarea"
             rows={8}
             cols={100}
-            style={{borderRadius:'5%', outline: 'dotted', color: 'pink'}}
+            style={{ borderRadius: '5%', outline: 'dotted', color: 'pink' }}
             placeholder='Some meaningful text'>
           </textarea>
           <br />
@@ -238,14 +237,12 @@ export default function Vibe() {
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{vibe.title}</MDBCardTitle>
-
                       <MDBCardText key={vibe.id} onClick={() => setShowInput(!showInput)}>
-                      {readMore ? vibe.text : `${vibe.text.substring(0,38)}...`}
-                        <button 
-                        style={{color: 'greenyellow'}} 
-                        className="btn" 
-                        onClick={() => setReadMore(!readMore)}>
-
+                        {readMore ? vibe.text : `${vibe.text.substring(0, 38)}...`}
+                        <button
+                          style={{ color: 'greenyellow' }}
+                          className="btn"
+                          onClick={() => setReadMore(!readMore)}>
                         </button>
                         <input
                           ref={inputRef}
@@ -259,17 +256,17 @@ export default function Vibe() {
                               setShowInput(false)
                             }
                           }}
-
                           defaultValue={vibe.text}
                         />
                       </MDBCardText>
-
                       <MDBCardText>
                         <small className='text-muted'>
                           {vibe.author} posted on {new Date(vibe.createdAt).toLocaleDateString()}
                         </small>
                       </MDBCardText>
-                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeVibe(vibe._id)}> {vibe.like} {vibe.category}</button>
+                      <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeVibe(vibe._id)}>♥️ {vibe.like}</button>
+                      <br></br>
+                      {vibe.category}
                     </MDBCardBody>
                   </MDBCol>
                 </MDBRow>
