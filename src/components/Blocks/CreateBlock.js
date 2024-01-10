@@ -1,9 +1,9 @@
-export default function CreateBlock({vibe, handleChange}){
+export default function CreateBlock({block, handleChange, createBlock}){
   return(
     <>
     <input
             type='text'
-            value={vibe.title}
+            value={block.title}
             onChange={handleChange}
             name="title"
             placeholder='Title'
@@ -11,14 +11,14 @@ export default function CreateBlock({vibe, handleChange}){
           </input>
           <br />
           <input
-            value={vibe.author}
+            value={block.author}
             onChange={handleChange}
             name="author"
             placeholder='Author'>
           </input>
           <br />
           <textarea
-            value={vibe.text}
+            value={block.text}
             onChange={handleChange}
             // name="textarea"
             rows={8}
@@ -28,7 +28,7 @@ export default function CreateBlock({vibe, handleChange}){
           </textarea>
           <br />
           <select
-            value={vibe.category}
+            value={block.category}
             onChange={handleChange}
             name="category">
             <option value="Misc">Select a 🤍</option>
@@ -41,7 +41,7 @@ export default function CreateBlock({vibe, handleChange}){
           </select>
           <br />
           <br />
-          <button onClick={() => createVibe()}>Display your Entry</button>
+          <button onClick={() => createBlock()}>Display your Entry</button>
       
     
     </>
