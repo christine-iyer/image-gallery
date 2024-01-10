@@ -2,9 +2,11 @@ export default function Block({}){
      return(
           <div>
                 <MDBCard key={vibe._id} className="w-75 p-3">
-               
+                <MDBRow className='g-0'>
+                  <MDBCol md='4'>
                     <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={vibe.image} alt='...' fluid />
-
+                  </MDBCol>
+                  <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{vibe.title}</MDBCardTitle>
                       <MDBCardText key={vibe.id} onClick={() => setShowInput(!showInput)}>
@@ -38,8 +40,9 @@ export default function Block({}){
                       <br></br>
                       {vibe.category}
                     </MDBCardBody>
-
-              </MDBCard>           
+                  </MDBCol>
+                </MDBRow>
+              </MDBCard>
 
           </div>
      )
