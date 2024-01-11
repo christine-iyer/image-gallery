@@ -1,4 +1,11 @@
+
+
 export default function BlocksPage(){
-     return()
+     return(
+          <>
+          <h1> Hi</h1>
+
+          </>
+     )
 
 }
