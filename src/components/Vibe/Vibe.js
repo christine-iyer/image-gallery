@@ -237,7 +237,7 @@ export default function Vibe() {
                   <MDBCol md='8'>
                     <MDBCardBody>
                       <MDBCardTitle>{vibe.title}</MDBCardTitle>
-                      <MDBCardText key={vibe.id} onClick={() => setShowInput(!showInput)}>
+                      <MDBCardText key='id' onClick={() => setShowInput(!showInput)}>
                         {readMore ? vibe.text : `${vibe.text.substring(0, 38)}...`}
                         <button
                           style={{ color: 'greenyellow' }}
