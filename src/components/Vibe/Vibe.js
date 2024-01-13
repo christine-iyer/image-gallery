@@ -57,7 +57,7 @@ export default function Vibe() {
         body: JSON.stringify({ ...vibe })
       })
       const data = await response.json()
-      setFoundVibes(data)
+      setFoundVibes([data, ...vibe])
       setVibe({
         title: '',
         author: '',
