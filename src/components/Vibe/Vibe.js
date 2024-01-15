@@ -3,7 +3,6 @@ import { Cloudinary } from "@cloudinary/url-gen";
 import UploadWidget from '../Image/UploadWidget';
 import { Container } from 'react-bootstrap';
 import { border } from '@cloudinary/url-gen/qualifiers/background';
-
 import '../../App.css';
 
 import {
