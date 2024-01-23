@@ -240,8 +240,8 @@ export default function Saylor() {
                               setShowInput(false)
                             }
                           }}
-                          defaultValue={saylor.text}
-                        />
+                          defaultValue={saylor.alt}
+                        />{saylor.alt}
                       </MDBCardText>
                       <MDBCardText>
                         <small className='text-muted'>

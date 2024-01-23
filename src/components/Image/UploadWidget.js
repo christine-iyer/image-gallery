@@ -8,16 +8,13 @@ const UploadWidget = ({ children, onUpload }) => {
   useEffect(() => {
     // Store the Cloudinary window instance to a ref when the page renders
 
-    if ( !cloudinary ) {
+    if (!cloudinary) {
       cloudinary = window.cloudinary;
     }
 
-    // To help improve load time of the widget on first instance, use requestIdleCallback
-    // to trigger widget creation. If requestIdleCallback isn't supported, fall back to
-    // setTimeout: https://caniuse.com/requestidlecallback
 
     function onIdle() {
-      if ( !widget ) {
+      if (!widget) {
         widget = createWidget();
       }
     }
@@ -40,7 +37,7 @@ const UploadWidget = ({ children, onUpload }) => {
 
     const options = {
       cloudName: 'dqjhgnivi', // Ex: mycloudname
-      uploadPreset: 'crystal' ,// Ex: myuploadpreset
+      uploadPreset: 'crystal',// Ex: myuploadpreset
     }
 
     return cloudinary?.createUploadWidget(options,
@@ -49,7 +46,7 @@ const UploadWidget = ({ children, onUpload }) => {
         // only trigger when one of those are the case. You can additionally
         // create a separate handler such as onEvent and trigger it on
         // ever occurance
-        if ( error || result.event === 'success' ) {
+        if (error || result.event === 'success') {
           onUpload(error, result, widget);
         }
       }
@@ -62,7 +59,7 @@ const UploadWidget = ({ children, onUpload }) => {
    */
 
   function open() {
-    if ( !widget ) {
+    if (!widget) {
       widget = createWidget();
     }
     widget && widget.open();
