@@ -243,7 +243,7 @@ export default function Vibe() {
                           className="btn"
                           onClick={() => setReadMore(!readMore)}>
                         </button>
-                        {/* <input
+                        <input
                           ref={inputRef}
                           style={{ display: showInput ? 'block' : 'none' }}
                           type='text'
@@ -256,7 +256,7 @@ export default function Vibe() {
                             }
                           }}
                           defaultValue={vibe.text}
-                        />*/}
+                        />
                       </MDBCardText> 
                       <MDBCardText>
                         <small className='text-muted'>
