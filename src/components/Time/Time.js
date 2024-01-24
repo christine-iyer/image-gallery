@@ -63,7 +63,7 @@ export default function Time() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ ...updatedData })
+        body: JSON.stringify({ updatedData })
       })
       const data = await response.json()
       const timesCopy = [...times]
