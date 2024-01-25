@@ -30,11 +30,6 @@ export default function Saylor() {
   const [showInput, setShowInput] = useState(false)
   const [url, updateUrl] = useState(false);
   const [error, updateError] = useState();
-  const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
   
   const inputRef = useRef(null)
   const handleChange = (evt) => {
@@ -218,21 +213,21 @@ export default function Saylor() {
           </div>
         </div>
         <hr></hr>
-        {/* <div style={{display:"grid"}}> */}
-          {saylors.length ? (
+        <div style={{display:"grid"}}>
+          {saylors && saylors.length ? (
             
         <Container className='collumns'>
           {saylors.map((saylor) => {
             return (
-<MDBCard key={saylor._id} className="w-75 p-3">
+              <MDBCard key={saylor._id} className="w-75 p-3">
                 <MDBRow className='g-0'>
                   <MDBCol md='4'>
                     <MDBCardImage style={{ "maxWidth": "100%", "height": "15vw" }} src={saylor.link} alt='...' fluid />
                   </MDBCol>
                   <MDBCol md='8'>
                     <MDBCardBody>
-                      <MDBCardTitle>{saylor.title}</MDBCardTitle>
-                      <MDBCardText onClick={() => setShowInput(!showInput)}>{saylor.text}
+                      <MDBCardTitle>{saylor.alt}</MDBCardTitle>
+                      <MDBCardText onClick={() => setShowInput(!showInput)}>{saylor.alt}
                         <input
                           ref={inputRef}
                           style={{ display: showInput ? 'block' : 'none' }}
@@ -241,13 +236,13 @@ export default function Saylor() {
                             if (e.key === 'Enter') {
                               e.preventDefault()
                               // const text = inputRef.current.value
-                              updateSaylor(saylor._id, { text: e.target.value })
+                              updateSaylor(saylor._id, { alt: e.target.value })
                               setShowInput(false)
                             }
                           }}
                           defaultValue={saylor.alt}
-                        />{saylor.alt}
-                      </MDBCardText>
+                        />
+                      </MDBCardText>{saylor.alt}
                       <MDBCardText>
                         <small className='text-muted'>
                           {saylor.author} posted on {new Date(saylor.createdAt).toLocaleDateString()}
@@ -262,13 +257,10 @@ export default function Saylor() {
           }
           )
           }
-        </Container>
-        )
-        :<> No Saylor entries yet! Yet Add One Below.</>
+        </Container>):<> No Saylor entries yet! Yet Add One Below.</>
           }
-                </div>
-        {/* </div> */}
-
+        </div>
+      </div>
     </div>
   )
 }
