@@ -237,7 +237,7 @@ export default function Vibe() {
                     <MDBCardBody>
                       <MDBCardTitle>{vibe.title}</MDBCardTitle>
                       <MDBCardText key='id' onClick={() => setShowInput(!showInput)}>
-                        {readMore ? vibe.text : `${vibe.text.substring(0, 38)}...`}
+                      {vibe.text}
                         <button
                           style={{ color: 'greenyellow' }}
                           className="btn"
@@ -249,7 +249,7 @@ export default function Vibe() {
                           type='text'
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') {
-                              e.preventDefault()
+                              // e.preventDefault()
                               // const text = inputRef.current.value
                               updateVibe(vibe._id, { text: e.target.value })
                               setShowInput(!setShowInput)
@@ -257,6 +257,10 @@ export default function Vibe() {
                           }}
                           defaultValue={vibe.text}
                         />
+                        <button   onClick={() => updateVibe(vibe._id)}
+        >
+          Edit Me
+        </button>
                       </MDBCardText> 
                       <MDBCardText>
                         <small className='text-muted'>
