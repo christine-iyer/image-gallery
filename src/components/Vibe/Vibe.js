@@ -252,7 +252,7 @@ export default function Vibe() {
                               e.preventDefault()
                               // const text = inputRef.current.value
                               updateVibe(vibe._id, { text: e.target.value })
-                              setShowInput(false)
+                              setShowInput(!setShowInput)
                             }
                           }}
                           defaultValue={vibe.text}
