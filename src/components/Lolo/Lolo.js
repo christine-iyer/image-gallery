@@ -214,7 +214,7 @@ export default function Lolo() {
                       <div key={lolo.id} className={setClass(lolo, styles)} >
                         <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={lolo.link} alt={lolo.alt} />
                      
-                      <p onClick={() => setShowInput(!showInput)}>{lolo.alt}. Posted on {new Date(lolo.createdAt).toLocaleDateString()}.
+                      <p onClick={() => setShowInput(!showInput)}>{lolo.alt}. Posted on {new Date(lolo.createdAt).toLocaleDateString()}.</p>
 
                         <input
                           ref={inputRef}
@@ -222,15 +222,15 @@ export default function Lolo() {
                           type='text'
                           onKeyDown={(e) => {
                             if (e.key === 'Enter') {
-                              e.preventDefault()
-                              //const alt = inputRef.current.value
-                              updateLolo(lolo._id, { alt: e.target.value })
+                              // e.preventDefault()
+                              const alt = inputRef.current.value
+                              updateLolo(lolo._id, { alt: alt })
                               setShowInput(false)
                             }
                           }}
                           defaultValue={lolo.alt}
                         />
-                      </p>
+                      
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => likeLolo(lolo._id)}> {lolo.likes}💜</button>
                       <button style={{ 'fontStyle': 'italic' }} className="btn btn-outline-warning" onClick={() => deleteLolo(lolo._id)}>🗑️</button>
                     </div>
