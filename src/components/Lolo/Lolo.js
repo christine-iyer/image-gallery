@@ -6,8 +6,6 @@ import setClass from '../../utilities/category-class'
 // import '../App.css'
 import styles from './Lolo.module.scss'
 
-
-
 export default function Lolo() {
   const [foundLolos, setFoundLolos] = useState(null)
   const [lolos, setLolos] = useState([])
@@ -30,7 +28,12 @@ export default function Lolo() {
 
   const getLolos = async () => {
     try {
-      const response = await fetch('/api/lolos')
+      const response = await fetch('/api/lolos', {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       const data = await response.json()
       setLolos(data)
       console.log(data)
@@ -38,6 +41,10 @@ export default function Lolo() {
       console.error(error)
     }
   }
+
+  useEffect(() => {
+    getLolos()
+  }, [foundLolos])
 
   const createLolo = async () => {
     try {
@@ -86,7 +93,6 @@ export default function Lolo() {
         body: JSON.stringify(updatedData)
       })
       const data = await response.json()
-      setFoundLolos(data)
       const lolosCopy = [...lolos]
       const index = lolosCopy.findIndex(lolo => id === lolo._id)
       lolosCopy[index] = { ...lolosCopy[index], ...updatedData }
@@ -120,10 +126,6 @@ export default function Lolo() {
     }
   }
 
-  useEffect(() => {
-    getLolos()
-  }, [foundLolos])
-
   function handleOnUpload(error, result, widget) {
     if (error) {
       updateError(error);
@@ -140,9 +142,7 @@ export default function Lolo() {
       alt: '',
       category:'',
       likes: 0, 
-      
-    })
-    
+      })
   }
   return (
     <>
@@ -211,7 +211,7 @@ export default function Lolo() {
                 return (
                   <div className={styles.canvas}>
                     <div style={{ "display": "flex", "flexWrap": "wrap" }}>
-                      <div key={lolo.id} className={setClass(lolo, styles)} >
+                      <div key={lolo._id} className={setClass(lolo, styles)} >
                         <img style={{ "borderRadius": "5%", "objectFit": "contain", "width": "100%", "height": "15vw" }} src={lolo.link} alt={lolo.alt} />
                      
                       <p onClick={() => setShowInput(!showInput)}>{lolo.alt}. Posted on {new Date(lolo.createdAt).toLocaleDateString()}.</p>
